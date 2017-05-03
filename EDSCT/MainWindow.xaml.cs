@@ -21,7 +21,7 @@ namespace EDSCT
         static string AppFolder = AppDomain.CurrentDomain.BaseDirectory;
         public static string DataFolder = AppFolder + "Data\\";
         string LogFile = AppFolder + "EDSCT.log";
-
+        
 
 
         public MainWindow()
@@ -62,8 +62,11 @@ namespace EDSCT
 
         public void addBoxItems()
         {
+
             
-            
+            var shipData = JsonConvert.DeserializeObject<dynamic>(JsonHandler.json);
+            var shipName = shipData.ShipName;
+            logger(shipName);
             //Supposed to go through each JSON located inside /Data/
             string[] boxItems = null; //Nulled while figuring out how to work with JSON
              for (int i = 0; i < boxItems.Length; i++)
