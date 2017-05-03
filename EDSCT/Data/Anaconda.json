@@ -1,0 +1,51 @@
+[
+  {
+    "Horizons": false,
+    "Name": "Anaconda",
+    "Manufacturer": "Faulcon DeLacy",
+    "Dimensions": [
+      152.4,
+      61.8,
+      32.0
+    ],
+    "LandingPadSize": "Large",
+    "Type": "Heavy Multipurpose",
+    "Cost": 146969450,
+    "Insurance": 7348472,
+    "TopSpeed": 180,
+    "MaxSpeed": 209,
+    "BoostSpeed": 244,
+    "MaxBoostSpeed": 278,
+    "Agility": 95,
+    "Shields":350,
+    "Armor": 945,
+    "HullMass": 400,
+    "CargoCapacity": 114,
+    "MaxCargo": 468,
+    "FuelCapacity": 32,
+    "UnladenJump": 9.00,
+    "MaxJump": 41.43,
+    "MassLockFactor": 23,
+    "Seats": 3,
+    "FighterBay": true,
+    "FighterCount": 15
+  }
+][
+  {
+    "Utility": 8,
+    "Small": 2,
+    "Medium": 2,
+    "Large": 3,
+    "Huge": 1
+  }
+][
+  {
+    "Size1": 1,
+    "Size2": 3,
+    "Size3": 3,
+    "Size4": 3,
+    "Size5": 3,
+    "Size6": 1,
+    "Military": 1
+  }
+]

@@ -1,7 +1,7 @@
 [
   {
     "Horizons": false,
-    "Name": "Sidewinder",
+    "ShipName": "Sidewinder",
     "Manufacturer": "Faulcon DeLacy",
     "Dimensions": [
       14.9,
@@ -46,7 +46,6 @@
     "Size4": 0,
     "Size5": 0,
     "Size6": 0,
-    "Size7": 0,
-    "Size8": 0
+    "Military": 0
   }
 ]

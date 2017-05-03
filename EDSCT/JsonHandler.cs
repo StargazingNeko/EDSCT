@@ -73,8 +73,7 @@ namespace EDSCT
             public int Size4 { get; set; }
             public int Size5 { get; set; }
             public int Size6 { get; set; }
-            public int Size7 { get; set; }
-            public int Size8 { get; set; }
+            public int Military { get; set; }
 
         }
 
@@ -133,8 +132,7 @@ namespace EDSCT
                 Size4 = 0,
                 Size5 = 0,
                 Size6 = 0,
-                Size7 = 0,
-                Size8 = 0
+                Military = 0
             });
 
        
