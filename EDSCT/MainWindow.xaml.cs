@@ -54,6 +54,7 @@ namespace EDSCT
                     JsonHandler.createExampleJson();
                 }
                 logger(" - Reading files");
+                JsonHandler.loadJson();
                 addBoxItems();
 
             }

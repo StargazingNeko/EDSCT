@@ -1,11 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 
 namespace EDSCT
@@ -35,7 +31,7 @@ namespace EDSCT
             public int MaxSpeed { get; set; }
             public int BoostSpeed { get; set; }
             public int MaxBoostSpeed { get; set; }
-            public int Agility { get; set; }
+            public int Manoeuvrability { get; set; }
             public int Shields { get; set; }
             public int Armor { get; set; }
             public int HullMass { get; set; }
@@ -88,7 +84,7 @@ namespace EDSCT
                 MaxSpeed = 255,
                 BoostSpeed = 320,
                 MaxBoostSpeed = 371,
-                Agility = 168,
+                Manoeuvrability = 168,
                 Shields = 40,
                 Armor = 108,
                 HullMass = 25,
