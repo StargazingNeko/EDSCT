@@ -5,16 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDSCT"
         mc:Ignorable="d"
-        Title="EDSCT - Elite Dangerous Ship Comparison Tool" WindowStartupLocation="CenterScreen" ToolTip="A tool designed for comparing ships from Elite Dangerous" Background="#FF858585">
+        Title="EDSCT - Elite Dangerous Ship Comparison Tool" WindowStartupLocation="CenterScreen" ToolTip="A tool designed for comparing ships from Elite Dangerous" Background="#FF858585" Margin="0" Height="650" Width="750">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="264*"/>
-            <ColumnDefinition Width="496*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="254*"/>
+            <ColumnDefinition Width="134*"/>
+            <ColumnDefinition Width="361*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="shipBox1" Grid.Column="1" HorizontalAlignment="Left" Margin="75,75,0,0" VerticalAlignment="Top" Width="200" ToolTip="Select first ship for comparison" FontFamily="MicraC" FontWeight="Bold">
-            
+        <ComboBox x:Name="shipBox1" Grid.Column="2" HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="200" ToolTip="Select first ship for comparison" FontFamily="MicraC" FontWeight="Bold">
+
         </ComboBox>
+        <ComboBox x:Name="shipBox2" Grid.Column="4" Margin="0,75,50,0" VerticalAlignment="Top" Width="200" ToolTip="Select second ship for comparison" FontFamily="Micra" FontWeight="Bold" HorizontalAlignment="Right"/>
 
     </Grid>
 </Window>
