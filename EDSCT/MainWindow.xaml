@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDSCT"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="EDSCT - Elite Dangerous Ship Comparison Tool" WindowStartupLocation="CenterScreen" ToolTip="A tool designed for comparing ships from Elite Dangerous" Background="#FF858585">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="264*"/>
+            <ColumnDefinition Width="496*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="shipBox1" Grid.Column="1" HorizontalAlignment="Left" Margin="75,75,0,0" VerticalAlignment="Top" Width="200" ToolTip="Select first ship for comparison" FontFamily="MicraC" FontWeight="Bold">
+            
+        </ComboBox>
+
     </Grid>
 </Window>
