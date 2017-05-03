@@ -18,11 +18,11 @@ namespace EDSCT
         static string AppFolder = AppDomain.CurrentDomain.BaseDirectory;
         public static string DataFolder = AppFolder + "Data\\";
 
-        //Core ship info
-        public List<ship> Ship { get; set; }
         
+
         public class ship
         {
+            //Core ship info
             public bool Horizons { get; set; }
             public string ShipName { get; set; }
             public string Manufacturer { get; set; }
@@ -48,25 +48,15 @@ namespace EDSCT
             public int Seats { get; set; }
             public bool FighterBay { get; set; }
             public int FighterCount { get; set; }
-        }
 
-        //Hardpoints
-        public List<hardpoints> Hardpoints { get; set; }
-
-        public class hardpoints
-        {
+            //Hardpoints
             public int Utility { get; set; }
             public int Small { get; set; }
             public int Medium { get; set; }
             public int Large { get; set; }
             public int Huge { get; set; }
-        }
 
-
-        //Internal Sizes
-        public List<internals> Internals { get; set; }
-        public class internals
-        {
+            //Internal Sizes
             public int Size1 { get; set; }
             public int Size2 { get; set; }
             public int Size3 { get; set; }
@@ -74,7 +64,6 @@ namespace EDSCT
             public int Size5 { get; set; }
             public int Size6 { get; set; }
             public int Military { get; set; }
-
         }
 
 
@@ -82,11 +71,10 @@ namespace EDSCT
         public static void createExampleJson()
         {
 
-            List<ship> _jsonShip = new List<ship>();
-            List<hardpoints> _jsonHardpoints = new List<hardpoints>();
-            List<internals> _jsonInternals = new List<internals>();
+            List<ship> Ship = new List<ship>();
 
-            _jsonShip.Add(new ship()
+
+            Ship.Add(new ship()
             {
                 Horizons = false,
                 ShipName = "Sidewinder",
@@ -112,20 +100,12 @@ namespace EDSCT
                 FuelCapacity = 2,
                 UnladenJump = 7.56,
                 MaxJump = 24.43,
-                MassLockFactor = 6
-            });
-
-            _jsonHardpoints.Add(new hardpoints()
-            {
+                MassLockFactor = 6,
                 Utility = 2,
                 Small = 2,
                 Medium = 0,
                 Large = 0,
-                Huge = 0
-            });
-
-            _jsonInternals.Add(new internals()
-            {
+                Huge = 0,
                 Size1 = 2,
                 Size2 = 2,
                 Size3 = 0,
@@ -135,12 +115,13 @@ namespace EDSCT
                 Military = 0
             });
 
-       
 
-            string json = JsonConvert.SerializeObject(_jsonShip, Formatting.Indented) + JsonConvert.SerializeObject(_jsonHardpoints, Formatting.Indented) + JsonConvert.SerializeObject(_jsonInternals, Formatting.Indented);
+
+            string json = JsonConvert.SerializeObject(Ship, Formatting.Indented);
 
             File.WriteAllText(DataFolder + "Sidewinder.json", json);
         }
+
 
         public static void loadJson()
         {
@@ -149,8 +130,6 @@ namespace EDSCT
                 {
                     string json = r.ReadToEnd();
                     List<ship> itemsShip = JsonConvert.DeserializeObject<List<ship>>(json);
-                    List<hardpoints> itemsHardpoints = JsonConvert.DeserializeObject<List<hardpoints>>(json);
-                    List<internals> itemsInternals = JsonConvert.DeserializeObject<List<internals>>(json);
                 }
             }
         }

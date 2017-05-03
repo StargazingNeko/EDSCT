@@ -1,18 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Newtonsoft.Json;
 
 
@@ -25,12 +14,15 @@ namespace EDSCT
     public partial class MainWindow : Window
     {
 
+
+        //variables
         public string LogTime = DateTime.Now.ToString("h:mm:ss tt");
         public string LogTimeNewLine = DateTime.Now.ToString("\nh:mm:ss tt");
         static string AppFolder = AppDomain.CurrentDomain.BaseDirectory;
         public static string DataFolder = AppFolder + "Data\\";
         string LogFile = AppFolder + "EDSCT.log";
-        
+
+
 
         public MainWindow()
         {
@@ -70,22 +62,33 @@ namespace EDSCT
 
         public void addBoxItems()
         {
-            shipBox1.Text = "Select Ship";
+            
+            
+            //Supposed to go through each JSON located inside /Data/
+            string[] boxItems = null; //Nulled while figuring out how to work with JSON
+             for (int i = 0; i < boxItems.Length; i++)
+             {
+                 int[] numBoxItems = new int[10];
+                 boxItems[i] = null; //Here it is supposed to pull the "ShipName" from the JSONs for adding to the Ship selection boxes, for now nulled out just to remove error while I figure it out
+             }
 
 
-            /*string[] boxItems;
-            for (int i = 0; i<boxItems.Length; i++)
+
+            foreach (string file in Directory.EnumerateFiles(DataFolder, "*.json"))
             {
-                int[] numBoxItems = new int[10];
-                boxItems[i] = JsonHandler.ship.;
+                using (StreamReader r = new StreamReader(file))
+                {
+                    string json = r.ReadToEnd();
+                    List<JsonHandler.ship> shipData = JsonConvert.DeserializeObject<List<JsonHandler.ship>>(json);
+                }
             }
 
 
-            shipBox1.ItemsSource = boxItems;*/
-            
+            //shipBox1.ItemsSource = boxItems; //Not Ready for this yet
+
         }
 
-        public void logger (string Text)
+        public void logger (string Text) //Simple logging method for writting to a "log" to test and ensure things are working how I want them
         {
             File.AppendAllText(LogFile, LogTimeNewLine + Text);
         }

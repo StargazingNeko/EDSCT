@@ -28,18 +28,12 @@
     "MassLockFactor": 6,
     "Seats": 1,
     "FighterBay": false,
-    "FighterCount": 0
-  }
-][
-  {
+    "FighterCount": 0,
     "Utility": 2,
     "Small": 2,
     "Medium": 0,
     "Large": 0,
-    "Huge": 0
-  }
-][
-  {
+    "Huge": 0,
     "Size1": 2,
     "Size2": 2,
     "Size3": 0,
