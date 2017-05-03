@@ -29,17 +29,11 @@
     "Seats": 3,
     "FighterBay": true,
     "FighterCount": 15
-  }
-][
-  {
     "Utility": 8,
     "Small": 2,
     "Medium": 2,
     "Large": 3,
     "Huge": 1
-  }
-][
-  {
     "Size1": 1,
     "Size2": 3,
     "Size3": 3,
