@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDSCT"
         mc:Ignorable="d"
-        Title="EDSCT - Elite Dangerous Ship Comparison Tool" WindowStartupLocation="CenterScreen" ToolTip="A tool designed for comparing ships from Elite Dangerous" Background="#FF858585" Margin="0" Height="650" Width="750">
+        Title="EDSCT - Elite Dangerous Ship Comparison Tool" WindowStartupLocation="Manual" Margin="0" Height="600" Width="800" MinWidth="800" MinHeight="600" Grid.IsSharedSizeScope="True" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" SnapsToDevicePixels="True" Visibility="Visible">
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/background.png"/>
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -14,10 +17,18 @@
             <ColumnDefinition Width="134*"/>
             <ColumnDefinition Width="361*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="shipBox1" Grid.Column="2" HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="200" ToolTip="Select first ship for comparison" FontFamily="MicraC" FontWeight="Bold">
-
-        </ComboBox>
+        <ComboBox x:Name="shipBox1" Grid.Column="2" HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Width="200" ToolTip="Select first ship for comparison" FontFamily="MicraC" FontWeight="Bold"/>
         <ComboBox x:Name="shipBox2" Grid.Column="4" Margin="0,75,50,0" VerticalAlignment="Top" Width="200" ToolTip="Select second ship for comparison" FontFamily="Micra" FontWeight="Bold" HorizontalAlignment="Right"/>
+        <Label x:Name="shipHPLabel1" Content="HP =" Grid.Column="2" HorizontalAlignment="Left" Margin="85,120,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
+        <Label x:Name="shipHPLabel2" Content="= HP" Grid.Column="4" HorizontalAlignment="Left" Margin="205,120,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
+        <TextBlock x:Name="shipHPValue1" Grid.Column="2" HorizontalAlignment="Left" Margin="130,125,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
+        <TextBlock x:Name="shipHPValue2" Grid.Column="4" HorizontalAlignment="Left" Margin="195,125,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
+        <TextBlock x:Name="shipValue1" Grid.Column="2" HorizontalAlignment="Left" Margin="130,125,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
+        <TextBlock x:Name="shipValue2" Grid.Column="4" HorizontalAlignment="Left" Margin="195,125,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
+        <TextBlock x:Name="ship1HPValue1" Grid.Column="2" HorizontalAlignment="Left" Margin="130,125,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
+        <TextBlock x:Name="shipH1PValue2" Grid.Column="4" HorizontalAlignment="Left" Margin="195,125,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
+        <TextBlock x:Name="shipH2PValue1" Grid.Column="2" HorizontalAlignment="Left" Margin="130,125,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
+        <TextBlock x:Name="ship2HPValue2" Grid.Column="4" HorizontalAlignment="Left" Margin="195,125,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
 
     </Grid>
 </Window>

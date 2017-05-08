@@ -16,7 +16,7 @@
     "MaxSpeed": 209,
     "BoostSpeed": 244,
     "MaxBoostSpeed": 278,
-    "Manoeuvrability": 95,
+    "Manoeuvrability": 1,
     "Shields":350,
     "Armor": 945,
     "HullMass": 400,

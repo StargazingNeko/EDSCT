@@ -84,7 +84,7 @@ namespace EDSCT
                 MaxSpeed = 255,
                 BoostSpeed = 320,
                 MaxBoostSpeed = 371,
-                Manoeuvrability = 168,
+                Manoeuvrability = 5,
                 Shields = 40,
                 Armor = 108,
                 HullMass = 25,
