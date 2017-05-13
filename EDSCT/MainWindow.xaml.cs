@@ -126,7 +126,7 @@ namespace EDSCT {
                 JObject JShip = JObject.Parse(File.ReadAllText(ship));
                 if (shipBox1.Text == (string)JShip["ShipName"])
                 {
-                    bool horizons = (bool)JShip["Horizons"]; //This is how you call data.
+                    bool horizons = (bool)JShip["Horizons"];
 
                     if (!horizons)
                     {
