@@ -111,6 +111,35 @@ namespace EDSCT
 
         }
 
+        private void debug()
+        {
+
+            bool isDebug;
+            string debugFile = AppFolder + "debug";
+
+            JsonHandler.ship debugData = JsonConvert.DeserializeObject<JsonHandler.ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
+            testBox.Text = debugData.ShipName;
+
+
+            if (File.Exists(debugFile))
+            {
+                isDebug = true;
+            }
+            else
+            {
+                isDebug = false;
+            }
+
+            if (!isDebug)
+            {
+                testBox.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                testBox.Visibility = Visibility.Visible;
+            }
+        }
+
         public void logger (string Text) //Simple logging method for writting to a "log" to test and ensure things are working how I want them
         {
             File.AppendAllText(LogFile, LogTimeNewLine + Text);

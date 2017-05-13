@@ -29,7 +29,7 @@
         <TextBlock x:Name="shipH1PValue2" Grid.Column="4" HorizontalAlignment="Left" Margin="195,125,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
         <TextBlock x:Name="shipH2PValue1" Grid.Column="2" HorizontalAlignment="Left" Margin="130,125,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
         <TextBlock x:Name="ship2HPValue2" Grid.Column="4" HorizontalAlignment="Left" Margin="195,125,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White"/>
-        <TextBox x:Name="testBox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="109,256,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="476" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="testBox" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="109,256,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="476" Grid.ColumnSpan="3" FontWeight="Bold" Visibility="Hidden"/>
 
     </Grid>
 </Window>
