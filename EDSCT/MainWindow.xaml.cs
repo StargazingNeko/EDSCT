@@ -2,15 +2,19 @@
 using System.IO;
 using System.Windows;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using static EDSCT.JsonHandler;
+using Newtonsoft.Json.Linq;
 
-namespace EDSCT
-{
+namespace EDSCT {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    public partial class MainWindow : Window {
 
+        public Dictionary<string, JObject> _shipDict = new Dictionary<string, JObject>();
+        private JToken _shipJson;
 
         //variables
         public string LogTime = DateTime.Now.ToString("h:mm:ss tt");
@@ -20,29 +24,22 @@ namespace EDSCT
         string LogFile = AppFolder + "EDSCT.log";
 
 
-        public MainWindow()
-        {
+        public MainWindow() {
 
             InitializeComponent();
 
-            if (!File.Exists(LogFile))
-            {
+            if (!File.Exists(LogFile)) {
                 File.AppendAllText(LogFile, LogTime + " - Application Started");
-            }
-            else
-            {
+            } else {
                 logger(" - Application Started");
             }
 
-            if (!Directory.Exists(DataFolder))
-            {
+            if (!Directory.Exists(DataFolder)) {
                 logger(" - Data Folder not found, creating it now");
                 Directory.CreateDirectory("Data");
                 logger(" - Creating Sidewinder example JSON");
                 JsonHandler.createExampleJson();
-            }
-            else
-            {
+            } else {
                 logger(" - Data Folder found");
                 if (!File.Exists(DataFolder + "0Sidewinder.json"))
                 {
@@ -61,87 +58,62 @@ namespace EDSCT
 
 
 
-        public void colorCompare(dynamic shipDynData1, dynamic shipDynData2)
-        {
+        public void colorCompare(dynamic shipDynData1, dynamic shipDynData2) {
 
             double shipVal1 = Double.Parse(shipDynData1);
             double shipVal2 = Double.Parse(shipDynData2);
 
-            if (shipVal1 == shipVal2)
-            {
+            if (shipVal1 == shipVal2)  {
                 
-            }
-            else if (shipVal1 < shipVal2)
-            {
+            } else if (shipVal1 < shipVal2) {
 
-            }
-            else if(shipVal1 > shipVal2)
-            {
+            } else if(shipVal1 > shipVal2){
 
             }
         }
 
-        public void addBoxItems()
-        {
+        public void addBoxItems() {
+            
+            string[] shipPaths = Directory.GetFiles(DataFolder, "*.json");
 
+            foreach (string ship in shipPaths) {
 
-            //JsonHandler.ship shipData = JsonConvert.DeserializeObject<JsonHandler.ship>(File.ReadAllText(DataFolder + @"Sidewinder.json")); - Leaving this here for now for reference
+                JObject JShip = JObject.Parse(File.ReadAllText(ship));
+                _shipDict.Add(Path.GetFileNameWithoutExtension(ship), JShip);
+                logger(" - Found: " + _shipDict + ".json, loading it.");
 
-            foreach (string file in Directory.EnumerateFiles(DataFolder, "*.json"))
-            {
-                using (StreamReader r = new StreamReader(file))
-                {
-                   string json = r.ReadToEnd();
-                   JsonHandler.ship shipData = JsonConvert.DeserializeObject<JsonHandler.ship>(json);
-                   logger(" - Found: " + shipData.ShipName + ".json, loading it.");
+                string[] boxItems = new string[] { ship };
 
-
-                    string[] boxItems = new string[] { file };
-                    for (int i = 0; i < boxItems.Length; i++)
-                    {
-                        boxItems[i] = shipData.ShipName;
-                    }
-
-                    foreach (var shipName in boxItems) {
-                        shipBox1.Items.Add(shipName);
-                        shipBox2.Items.Add(shipName);
-                    }
+                foreach (var shipName in boxItems) {
+                    shipBox1.Items.Add(shipName);
+                    shipBox2.Items.Add(shipName);
                 }
             }
-
         }
 
-        private void debug()
-        {
+        private void debug() {
 
             bool isDebug;
             string debugFile = AppFolder + "debug";
 
-            if (File.Exists(debugFile))
-            {
+            if (File.Exists(debugFile)) {
                 isDebug = true;
                 JsonHandler.ship debugData = JsonConvert.DeserializeObject<JsonHandler.ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
                 testBox.Text = debugData.ShipName;
-            }
-            else
-            {
+            } else {
                 isDebug = false;
             }
 
-            if (!isDebug)
-            {
+            if (!isDebug) {
                 testBox.Visibility = Visibility.Hidden;
-            }
-            else
-            {
+            } else {
                 testBox.Visibility = Visibility.Visible;
             }
         }
-
-        public void logger (string Text) //Simple logging method for writting to a "log" to test and ensure things are working how I want them
-        {
+         
+        public void logger (string Text) {
+            //Simple logging method for writting to a "log" to test and ensure things are working how I want them
             File.AppendAllText(LogFile, LogTimeNewLine + Text);
         }
-
     }
 }

@@ -22,15 +22,15 @@
         <Label x:Name="shipHorizonsLabel1" Content="Horizons only :" HorizontalAlignment="Center" Margin="0,100,150,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="110" Grid.Column="2"/>
         <Label x:Name="shipHorizonsLabel2" Content=": Horizons only" Grid.Column="4" HorizontalAlignment="Center" Margin="100,100,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="110"/>
         <TextBlock x:Name="HorizonsBool1" HorizontalAlignment="Center" Margin="0,105,0,0" TextWrapping="Wrap" Text="No" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Lime" Height="18" Width="20" Grid.Column="2"/>
-        <TextBlock x:Name="HorizonsBool2" Grid.Column="4" HorizontalAlignment="Center" Margin="0,105,50,0" TextWrapping="Wrap" Text="Yes" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Red" Height="19" Width="22"/>
-        <Label x:Name="shipHullLabel1" Content="Hull :" Grid.Column="2" HorizontalAlignment="Center" Margin="0,125,150,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="46"/>
-        <Label x:Name="shipHullLabel2" Content=": Hull" Grid.Column="4" HorizontalAlignment="Center" Margin="150,125,50,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="46"/>
-        <TextBlock x:Name="shipHullValue1" Grid.Column="2" HorizontalAlignment="Center" Margin="0,130,75,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Red" Height="19" Width="8"/>
-        <TextBlock x:Name="shipHullValue2" Grid.Column="4" HorizontalAlignment="Center" Margin="25,130,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Lime" Height="19" Width="8"/>
-        <Label x:Name="shipShieldsLabel1" Content="Shields :" Grid.Column="2" HorizontalAlignment="Center" Margin="0,145,160,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="75"/>
-        <Label x:Name="shipShieldsLabel2" Content=": Shields" Grid.Column="4" HorizontalAlignment="Center" Margin="160,145,30,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="75"/>
-        <TextBlock x:Name="shipShieldsValue1" Grid.Column="2" HorizontalAlignment="Center" Margin="0,150,75,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="8"/>
-        <TextBlock x:Name="shipShieldsValue2" Grid.Column="4" HorizontalAlignment="Center" Margin="25,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="8"/>
+        <TextBlock x:Name="HorizonsBool2" Grid.Column="4" HorizontalAlignment="Center" Margin="150,105,198,0" TextWrapping="Wrap" Text="Yes" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Red" Height="19" Width="22"/>
+        <Label x:Name="shipHullLabel1" Content="Hull :" Grid.Column="2" HorizontalAlignment="Center" Margin="132,125,217,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="46"/>
+        <Label x:Name="shipHullLabel2" Content=": Hull" Grid.Column="4" HorizontalAlignment="Center" Margin="180,125,144,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="46"/>
+        <TextBlock x:Name="shipHullValue1" Grid.Column="2" HorizontalAlignment="Center" Margin="188,130,199,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Red" Height="19" Width="8"/>
+        <TextBlock x:Name="shipHullValue2" Grid.Column="4" HorizontalAlignment="Center" Margin="164,130,198,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Lime" Height="19" Width="8"/>
+        <Label x:Name="shipShieldsLabel1" Content="Shields :" Grid.Column="2" HorizontalAlignment="Center" Margin="113,145,207,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="75"/>
+        <Label x:Name="shipShieldsLabel2" Content=": Shields" Grid.Column="4" HorizontalAlignment="Center" Margin="180,145,115,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="75"/>
+        <TextBlock x:Name="shipShieldsValue1" Grid.Column="2" HorizontalAlignment="Center" Margin="188,150,199,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="8"/>
+        <TextBlock x:Name="shipShieldsValue2" Grid.Column="4" HorizontalAlignment="Center" Margin="164,150,198,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="8"/>
 
 
 
