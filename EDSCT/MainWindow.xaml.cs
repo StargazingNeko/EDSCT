@@ -53,7 +53,7 @@ namespace EDSCT
                 JsonHandler.ship sidwinderString = JsonConvert.DeserializeObject<JsonHandler.ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
                 testBox.Text = sidwinderString.ShipName;
                 addBoxItems();
-                colorCompare(shipHPValue1.Text, shipHPValue2.Text);
+                colorCompare(shipHullValue1.Text, shipHullValue2.Text);
 
             }
 
@@ -117,13 +117,11 @@ namespace EDSCT
             bool isDebug;
             string debugFile = AppFolder + "debug";
 
-            JsonHandler.ship debugData = JsonConvert.DeserializeObject<JsonHandler.ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
-            testBox.Text = debugData.ShipName;
-
-
             if (File.Exists(debugFile))
             {
                 isDebug = true;
+                JsonHandler.ship debugData = JsonConvert.DeserializeObject<JsonHandler.ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
+                testBox.Text = debugData.ShipName;
             }
             else
             {
