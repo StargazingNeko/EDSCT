@@ -1,20 +1,17 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using Newtonsoft.Json;
-
 
 namespace EDSCT
 {
 
-    
 
     public partial class JsonHandler
     {
         static string AppFolder = AppDomain.CurrentDomain.BaseDirectory;
         public static string DataFolder = AppFolder + "Data\\";
 
-        
+
 
         public class ship
         {
@@ -67,68 +64,50 @@ namespace EDSCT
         public static void createExampleJson()
         {
 
-            List<ship> Ship = new List<ship>();
+            ship Sidewinder = new ship();
 
+            Sidewinder.Horizons = false;
+            Sidewinder.ShipName = "Sidewinder";
+            Sidewinder.Manufacturer = "Faulcon DeLacy";
+            Sidewinder.Dimensions = new double[] { 14.9, 21.3, 5.4 };
+            Sidewinder.LandingPadSize = "Small";
+            Sidewinder.Type = "Light Multipurpose";
+            Sidewinder.Cost = 48000;
+            Sidewinder.Insurance = 1600;
+            Sidewinder.TopSpeed = 220;
+            Sidewinder.MaxSpeed = 255;
+            Sidewinder.BoostSpeed = 320;
+            Sidewinder.MaxBoostSpeed = 371;
+            Sidewinder.Manoeuvrability = 5;
+            Sidewinder.Shields = 40;
+            Sidewinder.Armor = 108;
+            Sidewinder.HullMass = 25;
+            Sidewinder.Seats = 1;
+            Sidewinder.FighterBay = false;
+            Sidewinder.FighterCount = 0;
+            Sidewinder.CargoCapacity = 4;
+            Sidewinder.MaxCargo = 12;
+            Sidewinder.FuelCapacity = 2;
+            Sidewinder.UnladenJump = 7.56;
+            Sidewinder.MaxJump = 24.43;
+            Sidewinder.MassLockFactor = 6;
+            Sidewinder.Utility = 2;
+            Sidewinder.Small = 2;
+            Sidewinder.Medium = 0;
+            Sidewinder.Large = 0;
+            Sidewinder.Huge = 0;
+            Sidewinder.Size1 = 2;
+            Sidewinder.Size2 = 2;
+            Sidewinder.Size3 = 0;
+            Sidewinder.Size4 = 0;
+            Sidewinder.Size5 = 0;
+            Sidewinder.Size6 = 0;
+            Sidewinder.Military = 0;
 
-            Ship.Add(new ship()
-            {
-                Horizons = false,
-                ShipName = "Sidewinder",
-                Manufacturer = "Faulcon DeLacy",
-                Dimensions = new double[] { 14.9, 21.3, 5.4 },
-                LandingPadSize = "Small",
-                Type = "Light Multipurpose",
-                Cost = 48000,
-                Insurance = 1600,
-                TopSpeed = 220,
-                MaxSpeed = 255,
-                BoostSpeed = 320,
-                MaxBoostSpeed = 371,
-                Manoeuvrability = 5,
-                Shields = 40,
-                Armor = 108,
-                HullMass = 25,
-                Seats = 1,
-                FighterBay = false,
-                FighterCount = 0,
-                CargoCapacity = 4,
-                MaxCargo = 12,
-                FuelCapacity = 2,
-                UnladenJump = 7.56,
-                MaxJump = 24.43,
-                MassLockFactor = 6,
-                Utility = 2,
-                Small = 2,
-                Medium = 0,
-                Large = 0,
-                Huge = 0,
-                Size1 = 2,
-                Size2 = 2,
-                Size3 = 0,
-                Size4 = 0,
-                Size5 = 0,
-                Size6 = 0,
-                Military = 0
-            });
-
-
-
-            string json = JsonConvert.SerializeObject(Ship, Formatting.Indented);
-
+            string json = JsonConvert.SerializeObject(Sidewinder, Formatting.Indented);
             File.WriteAllText(DataFolder + "Sidewinder.json", json);
+            
         }
-
-
-        public static void loadJson()
-        {
-            foreach (string file in Directory.EnumerateFiles(DataFolder, "*.json")) {
-                using (StreamReader r = new StreamReader(file))
-                {
-                    string json = r.ReadToEnd();
-                    List<ship> itemsShip = JsonConvert.DeserializeObject<List<ship>>(json);
-                }
-            }
-        }
-
+ 
     }
 }

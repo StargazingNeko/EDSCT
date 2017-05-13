@@ -1,10 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Windows;
 using Newtonsoft.Json;
-using System.Windows.Media;
-
 
 namespace EDSCT
 {
@@ -20,8 +17,7 @@ namespace EDSCT
         public string LogTimeNewLine = DateTime.Now.ToString("\nh:mm:ss tt");
         static string AppFolder = AppDomain.CurrentDomain.BaseDirectory;
         public static string DataFolder = AppFolder + "Data\\";
-        string LogFile = AppFolder + "EDSCT.log";        
-        
+        string LogFile = AppFolder + "EDSCT.log";
 
 
         public MainWindow()
@@ -48,15 +44,15 @@ namespace EDSCT
             else
             {
                 logger(" - Data Folder found");
-                if (!File.Exists(DataFolder + "Sidewinder.json"))
+                if (!File.Exists(DataFolder + "0Sidewinder.json"))
                 {
                     logger(" - Sidewinder example JSON missing, creating it now");
                     JsonHandler.createExampleJson();
                 }
                 logger(" - Reading files");
-                JsonHandler.loadJson();
+                JsonHandler.ship sidwinderString = JsonConvert.DeserializeObject<JsonHandler.ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
+                testBox.Text = sidwinderString.ShipName;
                 addBoxItems();
-
                 colorCompare(shipHPValue1.Text, shipHPValue2.Text);
 
             }
@@ -65,21 +61,21 @@ namespace EDSCT
 
 
 
-        public void colorCompare(string shipValue1, string shipValue2)
+        public void colorCompare(dynamic shipDynData1, dynamic shipDynData2)
         {
 
-            double shipValue1Num = Double.Parse(shipValue1);
-            double shipValue2Num = Double.Parse(shipValue2);
+            double shipVal1 = Double.Parse(shipDynData1);
+            double shipVal2 = Double.Parse(shipDynData2);
 
-            if (shipValue1Num == shipValue2Num)
+            if (shipVal1 == shipVal2)
+            {
+                
+            }
+            else if (shipVal1 < shipVal2)
             {
 
             }
-            else if (shipValue1Num < shipValue2Num)
-            {
-
-            }
-            else if(shipValue1Num > shipValue2Num)
+            else if(shipVal1 > shipVal2)
             {
 
             }
@@ -88,20 +84,30 @@ namespace EDSCT
         public void addBoxItems()
         {
 
-            /*
-            var shipData = JsonConvert.DeserializeObject<dynamic>(JsonHandler.json);
-            var shipName = shipData.ShipName;
-            logger(shipName);
-            //Supposed to go through each JSON located inside /Data/
-            string[] boxItems = null; //Nulled while figuring out how to work with JSON
-             for (int i = 0; i < boxItems.Length; i++)
-             {
-                 int[] numBoxItems = new int[10];
-                 boxItems[i] = null; //Here it is supposed to pull the "ShipName" from the JSONs for adding to the Ship selection boxes, for now nulled out just to remove error while I figure it out
-             }
-             
-            //shipBox1.ItemsSource = boxItems; //Not Ready for this yet
-            */
+
+            //JsonHandler.ship shipData = JsonConvert.DeserializeObject<JsonHandler.ship>(File.ReadAllText(DataFolder + @"Sidewinder.json")); - Leaving this here for now for reference
+
+            foreach (string file in Directory.EnumerateFiles(DataFolder, "*.json"))
+            {
+                using (StreamReader r = new StreamReader(file))
+                {
+                   string json = r.ReadToEnd();
+                   JsonHandler.ship shipData = JsonConvert.DeserializeObject<JsonHandler.ship>(json);
+                   logger(" - Found: " + shipData.ShipName + ".json, loading it.");
+
+
+                    string[] boxItems = new string[] { file };
+                    for (int i = 0; i < boxItems.Length; i++)
+                    {
+                        int[] numBoxItems = new int[10];
+                        boxItems[i] = shipData.ShipName;
+                    }
+
+                    shipBox1.ItemsSource = boxItems;
+                    shipBox2.ItemsSource = boxItems;
+                }
+            }
+
         }
 
         public void logger (string Text) //Simple logging method for writting to a "log" to test and ensure things are working how I want them
