@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using static EDSCT.JsonHandler;
 using Newtonsoft.Json.Linq;
+using System.Windows.Media;
 
 namespace EDSCT {
 
@@ -26,7 +27,8 @@ namespace EDSCT {
         public MainWindow() {
 
             InitializeComponent();
-
+            debug();
+            defaults();
             if (!File.Exists(LogFile)) {
                 File.AppendAllText(LogFile, LogTime + " - Application Started");
             } else {
@@ -40,59 +42,33 @@ namespace EDSCT {
                 createExampleJson();
             } else {
                 logger(" - Data Folder found");
-                if (!File.Exists(DataFolder + "0Sidewinder.json"))
+                if (!File.Exists(DataFolder + "Sidewinder.json"))
                 {
                     logger(" - Sidewinder example JSON missing, creating it now");
                     createExampleJson();
                 }
                 logger(" - Reading files");
                 addBoxItems();
-                colorCompare(shipHullValue1.Text, shipHullValue2.Text);
-
             }
 
-        }
-
-
-
-        public void colorCompare(dynamic shipDynData1, dynamic shipDynData2) {
-
-            double shipVal1 = Double.Parse(shipDynData1);
-            double shipVal2 = Double.Parse(shipDynData2);
-
-            if (shipVal1 == shipVal2)  {
-                
-            } else if (shipVal1 < shipVal2) {
-
-            } else if(shipVal1 > shipVal2){
-
-            }
         }
 
         public void addBoxItems() {
             
             string[] shipPaths = Directory.GetFiles(DataFolder, "*.json");
 
-            foreach (string ship in shipPaths) {
-
+            foreach (string ship in shipPaths)
+            {
                 JObject JShip = JObject.Parse(File.ReadAllText(ship));
                 _shipDict.Add(Path.GetFileNameWithoutExtension(ship), JShip);
-                logger(" - Found: " + _shipDict + ".json, loading it.");
+                logger(" - Found: " + JShip["ShipName"] + ".json, loading it.");
 
                 string[] boxItems = new string[] { ship };
 
-                foreach (var shipName in boxItems) {
+                foreach (var shipName in boxItems)
+                {
                     shipBox1.Items.Add(Path.GetFileNameWithoutExtension(shipName));
                     shipBox2.Items.Add(Path.GetFileNameWithoutExtension(shipName));
-                }
-
-                bool horizons = (bool)JShip["Horizons"]; //This is how you call data.
-
-                if (horizons == false) {
-                    HorizonsBool1.Text = "No";
-                } else {
-                    HorizonsBool1.Text = "Yes";
-                    HorizonsBool1.Foreground = System.Windows.Media.Brushes.Red;
                 }
             }
         }
@@ -116,10 +92,59 @@ namespace EDSCT {
                 testBox.Visibility = Visibility.Visible;
             }
         }
-         
-        public void logger (string Text) {
+
+        public void defaults()
+        {
+            //Box 1 default values
+            HorizonsBool1.Text = "No";
+            HorizonsBool1.Foreground = Brushes.Blue;
+            shipHullValue1.Text = "0";
+            shipHullValue1.Foreground = Brushes.Blue;
+            shipShieldsValue1.Text = "0";
+            shipShieldsValue1.Foreground = Brushes.Blue;
+
+            //Box 2 default values
+            HorizonsBool2.Text = "No";
+            HorizonsBool2.Foreground = Brushes.Blue;
+            shipHullValue2.Text = "0";
+            shipHullValue2.Foreground = Brushes.Blue;
+            shipShieldsValue2.Text = "0";
+            shipShieldsValue2.Foreground = Brushes.Blue;
+        }
+
+        public void logger(string Text)
+        {
             //Simple logging method for writting to a "log" to test and ensure things are working how I want them
             File.AppendAllText(LogFile, LogTimeNewLine + Text);
+        }
+
+        private void shipBox1_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            string[] shipPaths = Directory.GetFiles(DataFolder, "*.json");
+            foreach (string ship in shipPaths)
+            {
+                JObject JShip = JObject.Parse(File.ReadAllText(ship));
+                if (shipBox1.Text == (string)JShip["ShipName"])
+                {
+                    bool horizons = (bool)JShip["Horizons"]; //This is how you call data.
+
+                    if (!horizons)
+                    {
+                        HorizonsBool1.Text = "Yes";
+                        HorizonsBool1.Foreground = Brushes.Red;
+                    }
+                    else
+                    {
+                        HorizonsBool1.Text = "No";
+                        HorizonsBool1.Foreground = Brushes.Lime;
+                    }
+                }
+            }
+        }
+
+        private void shipBox2_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
