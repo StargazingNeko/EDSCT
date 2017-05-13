@@ -99,12 +99,13 @@ namespace EDSCT
                     string[] boxItems = new string[] { file };
                     for (int i = 0; i < boxItems.Length; i++)
                     {
-                        int[] numBoxItems = new int[10];
                         boxItems[i] = shipData.ShipName;
                     }
 
-                    shipBox1.ItemsSource = boxItems;
-                    shipBox2.ItemsSource = boxItems;
+                    foreach (var shipName in boxItems) {
+                        shipBox1.Items.Add(shipName);
+                        shipBox2.Items.Add(shipName);
+                    }
                 }
             }
 
