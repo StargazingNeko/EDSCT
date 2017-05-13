@@ -14,7 +14,6 @@ namespace EDSCT {
     public partial class MainWindow : Window {
 
         public Dictionary<string, JObject> _shipDict = new Dictionary<string, JObject>();
-        private JToken _shipJson;
 
         //variables
         public string LogTime = DateTime.Now.ToString("h:mm:ss tt");
@@ -38,17 +37,15 @@ namespace EDSCT {
                 logger(" - Data Folder not found, creating it now");
                 Directory.CreateDirectory("Data");
                 logger(" - Creating Sidewinder example JSON");
-                JsonHandler.createExampleJson();
+                createExampleJson();
             } else {
                 logger(" - Data Folder found");
                 if (!File.Exists(DataFolder + "0Sidewinder.json"))
                 {
                     logger(" - Sidewinder example JSON missing, creating it now");
-                    JsonHandler.createExampleJson();
+                    createExampleJson();
                 }
                 logger(" - Reading files");
-                JsonHandler.ship sidwinderString = JsonConvert.DeserializeObject<JsonHandler.ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
-                testBox.Text = sidwinderString.ShipName;
                 addBoxItems();
                 colorCompare(shipHullValue1.Text, shipHullValue2.Text);
 
@@ -85,8 +82,17 @@ namespace EDSCT {
                 string[] boxItems = new string[] { ship };
 
                 foreach (var shipName in boxItems) {
-                    shipBox1.Items.Add(shipName);
-                    shipBox2.Items.Add(shipName);
+                    shipBox1.Items.Add(Path.GetFileNameWithoutExtension(shipName));
+                    shipBox2.Items.Add(Path.GetFileNameWithoutExtension(shipName));
+                }
+
+                bool horizons = (bool)JShip["Horizons"]; //This is how you call data.
+
+                if (horizons == false) {
+                    HorizonsBool1.Text = "No";
+                } else {
+                    HorizonsBool1.Text = "Yes";
+                    HorizonsBool1.Foreground = System.Windows.Media.Brushes.Red;
                 }
             }
         }
@@ -98,7 +104,7 @@ namespace EDSCT {
 
             if (File.Exists(debugFile)) {
                 isDebug = true;
-                JsonHandler.ship debugData = JsonConvert.DeserializeObject<JsonHandler.ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
+                ship debugData = JsonConvert.DeserializeObject<ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
                 testBox.Text = debugData.ShipName;
             } else {
                 isDebug = false;
