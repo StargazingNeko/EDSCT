@@ -1,9 +1,10 @@
-﻿<Window x:Class="EDSCT.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDSCT"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="EDSCT.MainWindow"
         mc:Ignorable="d"
         Title="EDSCT - Elite Dangerous Ship Comparison Tool" WindowStartupLocation="Manual" Margin="0" Height="600" Width="800" MinWidth="800" MinHeight="600" Grid.IsSharedSizeScope="True" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" SnapsToDevicePixels="True" Visibility="Visible">
     <Window.Background>
@@ -24,12 +25,6 @@
         <Label x:Name="shipShieldsLabel2" Content="Shields :" Grid.Column="4" HorizontalAlignment="Center" Margin="161,149,134,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="75"/>
         <TextBlock x:Name="shipShieldsValue2" Grid.Column="4" HorizontalAlignment="Center" Margin="229,154,117,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="24" RenderTransformOrigin="1.625,0.526"/>
 
-
-
-
-
-
-
         <TextBox x:Name="testBox" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="0,500,-106,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="476" FontWeight="Bold" Visibility="Hidden"/>
         <Label x:Name="Manufacturer2" Content="Manufacturer :" Grid.Column="4" HorizontalAlignment="Center" Margin="117,166,141,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="27" Width="112"/>
         <TextBlock x:Name="shipManufacturer2" Grid.Column="4" HorizontalAlignment="Center" Margin="229,171,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="141"/>
@@ -48,17 +43,18 @@
         <Label x:Name="shipShieldsLabel2_Copy" Content="Shields :" Grid.Column="2" HorizontalAlignment="Center" Margin="107,149,213,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="75"/>
         <TextBlock x:Name="shipShieldsValue1" Grid.Column="2" HorizontalAlignment="Center" Margin="175,154,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="220" RenderTransformOrigin="1.625,0.526"/>
         <Label x:Name="Manufacturer2_Copy" Content="Manufacturer :" Grid.Column="2" HorizontalAlignment="Center" Margin="63,166,220,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="27" Width="112"/>
-        <TextBlock x:Name="shipManufacturer1" Grid.Column="2" HorizontalAlignment="Center" Margin="175,171,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="220"/>
+        <TextBlock x:Name="shipManufacturer1" Grid.Column="2" HorizontalAlignment="Center" Margin="175,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="220"><Run Text="0"/></TextBlock>
         <Label x:Name="Dimensions2_Copy" Content="Dimensions :" Grid.Column="2" HorizontalAlignment="Center" Margin="77,183,214,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="104"/>
         <TextBlock x:Name="shipDimensions1" Grid.Column="2" HorizontalAlignment="Center" Margin="175,188,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="23" Width="220"/>
         <Label x:Name="LandingPadSize2_Copy" Content="Landing Pad Size :" Grid.Column="2" HorizontalAlignment="Center" Margin="43,203,213,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="139"/>
         <TextBlock x:Name="shipLandingPadSize1" Grid.Column="2" HorizontalAlignment="Center" Margin="175,208,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="220"/>
         <Label x:Name="Cost2_Copy" Content="Cost :" Grid.Column="2" HorizontalAlignment="Center" Margin="124,221,214,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="57"/>
-        <TextBlock x:Name="shipCost1" Grid.Column="2" HorizontalAlignment="Center" Margin="175,226,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="220"/>
+        <TextBlock x:Name="shipCost1" Grid.Column="2" HorizontalAlignment="Center" Margin="175,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="220"><Run Text="0"/></TextBlock>
         <Label x:Name="Insurance2_Copy" Content="Insurance :" Grid.Column="2" HorizontalAlignment="Center" Margin="89,238,216,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="90"/>
-        <TextBlock x:Name="shipInsurance1" Grid.Column="2" HorizontalAlignment="Center" Margin="175,243,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="220"/>
+        <TextBlock x:Name="shipInsurance1" Grid.Column="2" HorizontalAlignment="Center" Margin="175,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="220"><Run Text="0"/></TextBlock>
         <Label x:Name="TopSpeed2_Copy" Content="Top Speed :" Grid.Column="2" HorizontalAlignment="Center" Margin="84,255,216,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="95"/>
         <TextBlock x:Name="shipTopSpeed1" Grid.Column="2" HorizontalAlignment="Center" Margin="175,261,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Blue" Height="19" Width="220"/>
+        <Button Content="Create JSON" Grid.Column="1" HorizontalAlignment="Left" Margin="0,523,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click" Grid.ColumnSpan="2" Height="48"/>
 
     </Grid>
 </Window>
