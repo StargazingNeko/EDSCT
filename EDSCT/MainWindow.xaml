@@ -17,8 +17,8 @@
             <ColumnDefinition Width="17*"/>
             <ColumnDefinition Width="370*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="shipBox1" Grid.Column="2" Margin="35,75,150,0" VerticalAlignment="Top" ToolTip="Select first ship for comparison" FontFamily="MicraC" FontWeight="Bold" HorizontalAlignment="Center" Width="200" Height="18" SelectionChanged="shipBox1_SelectionChanged" SelectedItem="Select Ship"/>
-        <ComboBox x:Name="shipBox2" Grid.Column="4" HorizontalAlignment="Left" Margin="125,75,0,0" VerticalAlignment="Top" Width="200" ToolTip="Select second ship for comparison" FontFamily="Micra" FontWeight="Bold" Height="18" SelectionChanged="shipBox2_SelectionChanged" SelectedItem="Select Ship"/>
+        <ComboBox x:Name="shipBox1" Grid.Column="2" Margin="35,75,150,0" VerticalAlignment="Top" ToolTip="Select first ship for comparison" FontFamily="MicraC" FontWeight="Bold" HorizontalAlignment="Center" Width="200" Height="18" SelectionChanged="shipBox1_SelectionChanged" SelectedItem="Select Ship" Text="Select Ship"/>
+        <ComboBox x:Name="shipBox2" Grid.Column="4" HorizontalAlignment="Left" Margin="125,75,0,0" VerticalAlignment="Top" Width="200" ToolTip="Select second ship for comparison" FontFamily="Micra" FontWeight="Bold" Height="18" SelectionChanged="shipBox2_SelectionChanged" SelectedItem="Select Ship" Text="Select Ship"/>
         <Label x:Name="shipHorizonsLabel1" Content="Horizons only :" HorizontalAlignment="Center" Margin="0,100,150,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="110" Grid.Column="2"/>
         <Label x:Name="shipHorizonsLabel2" Content=": Horizons only" Grid.Column="4" HorizontalAlignment="Center" Margin="100,100,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="29" Width="110"/>
         <TextBlock x:Name="HorizonsBool1" HorizontalAlignment="Center" Margin="0,105,0,0" TextWrapping="Wrap" Text="No" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Lime" Height="18" Width="22" Grid.Column="2"/>
