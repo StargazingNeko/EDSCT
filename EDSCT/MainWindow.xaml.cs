@@ -238,5 +238,13 @@ namespace EDSCT {
                 File.ReadAllText(DataFolder + "Sidewinder.json");
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            Hide();
+            CreateYourOwn form2 = new CreateYourOwn();
+            form2.ShowDialog();
+            form2 = null;
+            Show();
+        }
     }
 }
