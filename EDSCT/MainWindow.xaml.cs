@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using static EDSCT.JsonHandler;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace EDSCT {
 
@@ -120,16 +121,12 @@ namespace EDSCT {
         public void defaults()
         {
             //Box 1 default values
-            HorizonsBool1.Text = "No";
-            HorizonsBool1.Foreground = System.Windows.Media.Brushes.Blue;
             shipArmorValue1.Text = "0";
             shipArmorValue1.Foreground = System.Windows.Media.Brushes.Blue;
             shipShieldsValue1.Text = "0";
             shipShieldsValue1.Foreground = System.Windows.Media.Brushes.Blue;
 
             //Box 2 default values
-            HorizonsBool2.Text = "No";
-            HorizonsBool2.Foreground = System.Windows.Media.Brushes.Blue;
             shipArmorValue2.Text = "0";
             shipArmorValue2.Foreground = System.Windows.Media.Brushes.Blue;
             shipShieldsValue2.Text = "0";
@@ -159,19 +156,25 @@ namespace EDSCT {
                 logger(" - Ship 1: " + (string)JShip["ShipName"]);
                 Console.WriteLine("Ship 1: " + (string)JShip["ShipName"]);
 
-                bool horizons = (bool)JShip["Horizons"];
-                if (horizons == false)
-                {
-                    HorizonsBool1.Text = "No";
-                    HorizonsBool1.Foreground = System.Windows.Media.Brushes.Lime;
-                }
-                else
-                {
-                    HorizonsBool1.Text = "Yes";
-                    HorizonsBool1.Foreground = System.Windows.Media.Brushes.Red;
-                }
+                string[] dimensions = JShip.OfType<object>().Select(o => o.ToString()).ToArray();
+                logger("Getting type of dimensions: " + dimensions.GetType());
+                //Grab data and color
                 shipArmorValue1.Text = (string)JShip["Armor"];
                 shipArmorValue1.Foreground = System.Windows.Media.Brushes.Lime;
+                shipShieldsValue1.Text = (string)JShip["Shields"];
+                shipShieldsValue1.Foreground = System.Windows.Media.Brushes.Lime;
+                shipManufacturer1.Text = (string)JShip["Manufacturer"];
+                shipManufacturer1.Foreground = System.Windows.Media.Brushes.Lime;
+                shipDimensions1.Text = JShip["Dimensions"].ToString();
+                shipDimensions1.Foreground = System.Windows.Media.Brushes.Lime;
+                shipLandingPadSize1.Text = (string)JShip["LandingPadSize"];
+                shipLandingPadSize1.Foreground = System.Windows.Media.Brushes.Lime;
+                shipCost1.Text = string.Format("{0:n0} CR", JShip["Cost"]);
+                shipCost1.Foreground = System.Windows.Media.Brushes.Lime;
+                shipInsurance1.Text = string.Format("{0:n0} CR", JShip["Insurance"]);
+                shipInsurance1.Foreground = System.Windows.Media.Brushes.Lime;
+                shipTopSpeed1.Text = (string)JShip["TopSpeed"];
+                shipTopSpeed1.Foreground = System.Windows.Media.Brushes.Lime;
             }
             catch (FileNotFoundException)
             {
@@ -190,19 +193,23 @@ namespace EDSCT {
                 logger("Ship 2: " + (string)JShip["ShipName"], true);
                 Console.WriteLine("Ship 2: " + (string)JShip["ShipName"]);
 
-                bool horizons = (bool)JShip["Horizons"];
-                if (horizons == false)
-                {
-                    HorizonsBool2.Text = "No";
-                    HorizonsBool2.Foreground = System.Windows.Media.Brushes.Lime;
-                }
-                else
-                {
-                    HorizonsBool2.Text = "Yes";
-                    HorizonsBool2.Foreground = System.Windows.Media.Brushes.Red;
-                }
+                //Grab data and color
                 shipArmorValue2.Text = (string)JShip["Armor"];
                 shipArmorValue2.Foreground = System.Windows.Media.Brushes.Lime;
+                shipShieldsValue2.Text = (string)JShip["Shields"];
+                shipShieldsValue2.Foreground = System.Windows.Media.Brushes.Lime;
+                shipManufacturer2.Text = (string)JShip["Manufacturer"];
+                shipManufacturer2.Foreground = System.Windows.Media.Brushes.Lime;
+                shipDimensions2.Text = JShip["Dimensions"].ToString();
+                shipDimensions2.Foreground = System.Windows.Media.Brushes.Lime;
+                shipLandingPadSize2.Text = (string)JShip["LandingPadSize"];
+                shipLandingPadSize2.Foreground = System.Windows.Media.Brushes.Lime;
+                shipCost2.Text = string.Format("{0:n0} CR", JShip["Cost"]);
+                shipCost2.Foreground = System.Windows.Media.Brushes.Lime;
+                shipInsurance2.Text = string.Format("{0:n0} CR", JShip["Insurance"]);
+                shipInsurance2.Foreground = System.Windows.Media.Brushes.Lime;
+                shipTopSpeed2.Text = (string)JShip["TopSpeed"];
+                shipTopSpeed2.Foreground = System.Windows.Media.Brushes.Lime;
             }
             catch (FileNotFoundException)
             {
