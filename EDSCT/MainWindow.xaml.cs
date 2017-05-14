@@ -5,14 +5,14 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using static EDSCT.JsonHandler;
 using Newtonsoft.Json.Linq;
-using System.Windows.Media;
 
 namespace EDSCT {
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window {
+    public partial class MainWindow : Window
+    {
 
         public Dictionary<string, JObject> _shipDict = new Dictionary<string, JObject>();
 
@@ -24,23 +24,30 @@ namespace EDSCT {
         string LogFile = AppFolder + "EDSCT.log";
 
 
-        public MainWindow() {
+        public MainWindow()
+        {
 
             InitializeComponent();
-            debug();
+            debug("Debug Enabled");
             defaults();
-            if (!File.Exists(LogFile)) {
+            if (!File.Exists(LogFile))
+            {
                 File.AppendAllText(LogFile, LogTime + "- Application Started");
-            } else {
+            }
+            else
+            {
                 logger("- Application Started");
             }
 
-            if (!Directory.Exists(DataFolder)) {
+            if (!Directory.Exists(DataFolder))
+            {
                 logger("- Data Folder not found, creating it now");
                 Directory.CreateDirectory("Data");
                 logger("- Creating Sidewinder example JSON");
                 createExampleJson();
-            } else {
+            }
+            else
+            {
                 logger("- Data Folder found");
                 if (!File.Exists(DataFolder + "Sidewinder.json"))
                 {
@@ -49,11 +56,13 @@ namespace EDSCT {
                 }
                 logger("- Reading files");
                 addBoxItems();
+
             }
 
         }
 
-        public void addBoxItems() {
+        public void addBoxItems()
+        {
 
             string[] shipPaths = Directory.GetFiles(DataFolder, "*.json");
 
@@ -73,23 +82,38 @@ namespace EDSCT {
             }
         }
 
-        private void debug() {
+        private void debug(string text = null)
+        {
 
             bool isDebug;
             string debugFile = AppFolder + "debug";
 
-            if (File.Exists(debugFile)) {
+            if (File.Exists(debugFile))
+            {
                 isDebug = true;
                 ship debugData = JsonConvert.DeserializeObject<ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
                 testBox.Text = debugData.ShipName;
-            } else {
+            }
+            else
+            {
                 isDebug = false;
             }
 
-            if (!isDebug) {
+            if (!isDebug)
+            {
                 testBox.Visibility = Visibility.Hidden;
-            } else {
+            }
+            else
+            {
                 testBox.Visibility = Visibility.Visible;
+            }
+
+            if (text != null)
+            {
+                if (isDebug)
+                {
+                    logger(text, isDebug);
+                }
             }
         }
 
@@ -97,19 +121,19 @@ namespace EDSCT {
         {
             //Box 1 default values
             HorizonsBool1.Text = "No";
-            HorizonsBool1.Foreground = Brushes.Blue;
-            shipHullValue1.Text = "0";
-            shipHullValue1.Foreground = Brushes.Blue;
+            HorizonsBool1.Foreground = System.Windows.Media.Brushes.Blue;
+            shipArmorValue1.Text = "0";
+            shipArmorValue1.Foreground = System.Windows.Media.Brushes.Blue;
             shipShieldsValue1.Text = "0";
-            shipShieldsValue1.Foreground = Brushes.Blue;
+            shipShieldsValue1.Foreground = System.Windows.Media.Brushes.Blue;
 
             //Box 2 default values
             HorizonsBool2.Text = "No";
-            HorizonsBool2.Foreground = Brushes.Blue;
-            shipHullValue2.Text = "0";
-            shipHullValue2.Foreground = Brushes.Blue;
+            HorizonsBool2.Foreground = System.Windows.Media.Brushes.Blue;
+            shipArmorValue2.Text = "0";
+            shipArmorValue2.Foreground = System.Windows.Media.Brushes.Blue;
             shipShieldsValue2.Text = "0";
-            shipShieldsValue2.Foreground = Brushes.Blue;
+            shipShieldsValue2.Foreground = System.Windows.Media.Brushes.Blue;
         }
 
         public void logger(string Text, bool debug = false)
@@ -121,44 +145,71 @@ namespace EDSCT {
             }
             else
             {
-                File.AppendAllText(LogFile, LogTimeNewLine + " - debug: " + Text);
+                File.AppendAllText(LogFile, LogTimeNewLine + " - Debug: " + Text);
             }
-            
+
         }
 
         private void shipBox1_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             try
             {
-                JObject JShip = JObject.Parse(File.ReadAllText(DataFolder + shipBox1.Text + ".json"));
-                if (shipBox1.Text == (string)JShip["ShipName"])
-                {
-                    logger((string)JShip["ShipName"], true);
-                    Console.WriteLine((string)JShip["ShipName"]);
-                    bool horizons = (bool)JShip["Horizons"];
+                JObject JShip = JObject.Parse(File.ReadAllText(DataFolder + shipBox1.SelectedItem.ToString() + ".json"));
+                string item = (sender as System.Windows.Controls.ComboBox).SelectedItem as string;
+                logger(" - Ship 1: " + (string)JShip["ShipName"]);
+                Console.WriteLine("Ship 1: " + (string)JShip["ShipName"]);
 
-                    if (horizons == false)
-                    {
-                        HorizonsBool1.Text = "Yes";
-                        HorizonsBool1.Foreground = Brushes.Red;
-                    }
-                    else
-                    {
-                        HorizonsBool1.Text = "No";
-                        HorizonsBool1.Foreground = Brushes.Lime;
-                    }
+                bool horizons = (bool)JShip["Horizons"];
+                if (horizons == false)
+                {
+                    HorizonsBool1.Text = "No";
+                    HorizonsBool1.Foreground = System.Windows.Media.Brushes.Lime;
                 }
+                else
+                {
+                    HorizonsBool1.Text = "Yes";
+                    HorizonsBool1.Foreground = System.Windows.Media.Brushes.Red;
+                }
+                shipArmorValue1.Text = (string)JShip["Armor"];
+                shipArmorValue1.Foreground = System.Windows.Media.Brushes.Lime;
             }
             catch (FileNotFoundException)
             {
-                Console.Write("File Not Found, defaulting to Sidewinder.json");
+                Console.WriteLine(" Ship 1: File Not Found, defaulting to Sidewinder.json");
+                logger("- Ship 1: File Not Found, defaulting to Sidewinder.json");
                 File.ReadAllText(DataFolder + "Sidewinder.json");
             }
         }
 
         private void shipBox2_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            try
+            {
+                JObject JShip = JObject.Parse(File.ReadAllText(DataFolder + shipBox2.SelectedItem.ToString() + ".json"));
+                string item = (sender as System.Windows.Controls.ComboBox).SelectedItem as string;
+                logger("Ship 2: " + (string)JShip["ShipName"], true);
+                Console.WriteLine("Ship 2: " + (string)JShip["ShipName"]);
 
+                bool horizons = (bool)JShip["Horizons"];
+                if (horizons == false)
+                {
+                    HorizonsBool2.Text = "No";
+                    HorizonsBool2.Foreground = System.Windows.Media.Brushes.Lime;
+                }
+                else
+                {
+                    HorizonsBool2.Text = "Yes";
+                    HorizonsBool2.Foreground = System.Windows.Media.Brushes.Red;
+                }
+                shipArmorValue2.Text = (string)JShip["Armor"];
+                shipArmorValue2.Foreground = System.Windows.Media.Brushes.Lime;
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Ship 2: File Not Found, defaulting to Sidewinder.json");
+                logger(" - Ship 2: File Not Found, defaulting to Sidewinder.json");
+                File.ReadAllText(DataFolder + "Sidewinder.json");
+            }
         }
     }
 }
