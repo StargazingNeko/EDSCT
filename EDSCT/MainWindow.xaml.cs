@@ -92,8 +92,28 @@ namespace EDSCT {
             if (File.Exists(debugFile))
             {
                 isDebug = true;
-                ship debugData = JsonConvert.DeserializeObject<ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
-                testBox.Text = debugData.ShipName;
+                try
+                {
+                    ship debugData = JsonConvert.DeserializeObject<ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
+                    testBox.Text = debugData.ShipName;
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    Directory.CreateDirectory("Data");
+                    createExampleJson();
+                    ship debugData = JsonConvert.DeserializeObject<ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
+                    testBox.Text = debugData.ShipName;
+                }
+                catch (FileNotFoundException)
+                {
+                    if (!Directory.Exists(DataFolder))
+                    {
+                        Directory.CreateDirectory("Data");
+                    }
+                    createExampleJson();
+                    ship debugData = JsonConvert.DeserializeObject<ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
+                    testBox.Text = debugData.ShipName;
+                }
             }
             else
             {

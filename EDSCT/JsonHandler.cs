@@ -16,7 +16,6 @@ namespace EDSCT
         public class ship
         {
             //Core ship info
-            public bool Horizons { get; set; }
             public string ShipName { get; set; }
             public string Manufacturer { get; set; }
             public double[] Dimensions { get; set; }
@@ -66,7 +65,6 @@ namespace EDSCT
 
             ship Sidewinder = new ship();
 
-            Sidewinder.Horizons = false;
             Sidewinder.ShipName = "Sidewinder";
             Sidewinder.Manufacturer = "Faulcon DeLacy";
             Sidewinder.Dimensions = new double[] { 14.9, 21.3, 5.4 };
