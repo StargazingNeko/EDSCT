@@ -237,8 +237,8 @@ namespace EDSCT {
             customShipCreation.CargoCapacity = Int32.Parse(cargoCapacity);
             customShipCreation.MaxCargo = Int32.Parse(maxCargo);
             customShipCreation.FuelCapacity = Int32.Parse(fuelCapacity);
-            customShipCreation.UnladenJump = Int32.Parse(unladenJump);
-            customShipCreation.MaxJump = Int32.Parse(maxJump);
+            customShipCreation.UnladenJump = Double.Parse(unladenJump);
+            customShipCreation.MaxJump = Double.Parse(maxJump);
             customShipCreation.MassLockFactor = Int32.Parse(massLockFactor);
             customShipCreation.Utility = Int32.Parse(utility_);
             customShipCreation.Small = Int32.Parse(small_);
