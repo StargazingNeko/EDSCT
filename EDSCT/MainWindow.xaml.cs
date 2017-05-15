@@ -176,8 +176,6 @@ namespace EDSCT {
                 logger(" - Ship 1: " + (string)JShip["ShipName"]);
                 Console.WriteLine("Ship 1: " + (string)JShip["ShipName"]);
 
-                string[] dimensions = JShip.OfType<object>().Select(o => o.ToString()).ToArray();
-                logger("Getting type of dimensions: " + dimensions.GetType());
                 //Grab data and color
                 shipArmorValue1.Text = (string)JShip["Armor"];
                 shipArmorValue1.Foreground = System.Windows.Media.Brushes.Lime;
@@ -185,7 +183,8 @@ namespace EDSCT {
                 shipShieldsValue1.Foreground = System.Windows.Media.Brushes.Lime;
                 shipManufacturer1.Text = (string)JShip["Manufacturer"];
                 shipManufacturer1.Foreground = System.Windows.Media.Brushes.Lime;
-                shipDimensions1.Text = JShip["Dimensions"].ToString();
+                shipDimensions2.Text = (string)JShip["Dimensions"].ToString().Replace("[", "").Replace("]", "").Trim();
+                //^^ Sort of prints out the Dimensions, but not on the same line. ^^
                 shipDimensions1.Foreground = System.Windows.Media.Brushes.Lime;
                 shipLandingPadSize1.Text = (string)JShip["LandingPadSize"];
                 shipLandingPadSize1.Foreground = System.Windows.Media.Brushes.Lime;
@@ -220,7 +219,8 @@ namespace EDSCT {
                 shipShieldsValue2.Foreground = System.Windows.Media.Brushes.Lime;
                 shipManufacturer2.Text = (string)JShip["Manufacturer"];
                 shipManufacturer2.Foreground = System.Windows.Media.Brushes.Lime;
-                shipDimensions2.Text = JShip["Dimensions"].ToString();
+                shipDimensions2.Text = (string)JShip["Dimensions"].ToString().Replace("[", "").Replace("]", "").Trim();
+                //^^ Sort of prints out the Dimensions, but not on the same line. ^^
                 shipDimensions2.Foreground = System.Windows.Media.Brushes.Lime;
                 shipLandingPadSize2.Text = (string)JShip["LandingPadSize"];
                 shipLandingPadSize2.Foreground = System.Windows.Media.Brushes.Lime;
