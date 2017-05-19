@@ -5,22 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
-using Microsoft.Win32;
 
 namespace EDSCT {
     /// <summary>
-    /// Interaction logic for CreateYourOwn.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class CreateYourOwn : Window {
 
         //Variables
         public Dictionary<string, JObject> _shipDict = new Dictionary<string, JObject>();
 
-        public string LogTime = DateTime.Now.ToString("h:mm:ss tt");
-        public string LogTimeNewLine = DateTime.Now.ToString("\nh:mm:ss tt");
         static string AppFolder = AppDomain.CurrentDomain.BaseDirectory;
         public static string DataFolder = AppFolder + "Data\\";
-        string LogFile = AppFolder + "EDSCT.log";
         
         #region JSON Variables
         static string ShipName = "";
@@ -59,7 +55,8 @@ namespace EDSCT {
         static string size6_ = "";
         static string size7_ = "";
         static string size8_ = "";
-        static string military = "";
+        static string military_slot1 = "";
+        static string military_slot2 = "";
 
         //Dimensions hotfix
         static string L = "";
@@ -71,7 +68,7 @@ namespace EDSCT {
             InitializeComponent();
         }
 
-        #region Bunch of shitty on change events.
+       #region On change events.
 
         private void name_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
             ShipName = name.Text;
@@ -82,7 +79,6 @@ namespace EDSCT {
         }
 
         private void TextBox_TextChanged_1(object sender, System.Windows.Controls.TextChangedEventArgs e) {
-            //landing pad size idk why it called it this...
             landingPadSize = Landing_Pad_Size.Text;
         }
 
@@ -150,8 +146,7 @@ namespace EDSCT {
             maxJump = max_jump.Text;
         }
 
-        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
-            //This is MassLockFactor idk why it's using this name
+        private void MassLockFactor_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
             massLockFactor = mass_lock_factor.Text;
         }
 
@@ -219,10 +214,6 @@ namespace EDSCT {
             size8_ = size8.Text;
         }
 
-        private void military_input_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
-            military = military_input.Text;
-        }
-
         private void DimensionsLength_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
             L = DimensionsLength.Text;
         }
@@ -233,6 +224,16 @@ namespace EDSCT {
 
         private void DimensionsWidth_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
             W = DimensionsWidth.Text;
+        }
+
+        private void Military_slot1_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            military_slot1 = Military_slot1.Text;
+        }
+
+        private void Military_slot2_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            military_slot2 = Military_slot2.Text;
         }
 
         #endregion
@@ -257,7 +258,7 @@ namespace EDSCT {
             customShipCreation.Armor = Int32.Parse(armor_);
             customShipCreation.HullMass = Int32.Parse(hullMass);
             customShipCreation.Seats = Int32.Parse(seats_);
-            customShipCreation.FighterBay = false;
+            customShipCreation.FighterBay = bool.Parse(fighterBay);
             customShipCreation.FighterCount = Int32.Parse(fighterCount);
             customShipCreation.CargoCapacity = Int32.Parse(cargoCapacity);
             customShipCreation.MaxCargo = Int32.Parse(maxCargo);
@@ -278,7 +279,8 @@ namespace EDSCT {
             customShipCreation.Size6 = Int32.Parse(size6_);
             customShipCreation.Size7 = Int32.Parse(size7_);
             customShipCreation.Size8 = Int32.Parse(size8_);
-            customShipCreation.Military = Int32.Parse(military);
+            customShipCreation.Military_Slot1 = Int32.Parse(military_slot1);
+            customShipCreation.Military_Slot2 = Int32.Parse(military_slot2);
 
             string json = JsonConvert.SerializeObject(customShipCreation, Formatting.Indented);
             try
@@ -319,6 +321,9 @@ namespace EDSCT {
                 #region Grab Data From Deserialized / Parsed JSON
                 name.Text = (string)JShip["ShipName"];
                 Manufacturer1.Text = (string)JShip["Manufacturer"];
+                DimensionsLength.Text = (string)sizes[0];
+                DimensionsWidth.Text = (string)sizes[1];
+                DimensionsHeight.Text = (string)sizes[2];
                 Landing_Pad_Size.Text = (string)JShip["LandingPadSize"];
                 type.Text = (string)JShip["Type"]; //type of ship
                 ship_cost.Text = (string)JShip["Cost"];
@@ -353,10 +358,8 @@ namespace EDSCT {
                 size6.Text = (string)JShip["Size6"];
                 size7.Text = (string)JShip["Size7"];
                 size8.Text = (string)JShip["Size8"];
-                military_input.Text = (string)JShip["Military"];
-                DimensionsLength.Text = (string)sizes[0];
-                DimensionsWidth.Text = (string)sizes[1];
-                DimensionsHeight.Text = (string)sizes[2];
+                Military_slot1.Text = (string)JShip["Military_Slot1"];
+                Military_slot2.Text = (string)JShip["Military_Slot2"];
 
                 #endregion
 

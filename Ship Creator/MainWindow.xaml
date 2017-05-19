@@ -79,7 +79,7 @@
         <Label x:Name="Dimensions_Label" Content="Dimensions:" HorizontalAlignment="Left" Margin="17,22,0,0" VerticalAlignment="Top" Width="97" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="7" Grid.RowSpan="2"/>
         <Label x:Name="Military_Copy" Content="Slot 1:" HorizontalAlignment="Left" Margin="49,0,0,0" VerticalAlignment="Top" Width="52" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" Height="27"/>
         <Label x:Name="Military_Copy1" Content="Slot 2:" HorizontalAlignment="Left" Margin="49,0,0,21" VerticalAlignment="Bottom" Width="52" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="5" Grid.RowSpan="2" Height="27"/>
-        
+
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="25" Margin="114,-1,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TextChanged="name_TextChanged"/>
         <TextBox x:Name="Manufacturer1" HorizontalAlignment="Left" Height="25" Margin="114,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TextChanged="Manufacturer1_TextChanged" Grid.RowSpan="2"/>
         <TextBox x:Name="Landing_Pad_Size" HorizontalAlignment="Left" Height="25" Margin="114,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TextChanged="TextBox_TextChanged_1" Grid.Row="1" Grid.RowSpan="2"/>
@@ -99,7 +99,7 @@
         <TextBox x:Name="fuel_capacity" HorizontalAlignment="Left" Height="25" Margin="114,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TextChanged="fuel_capacity_TextChanged" Grid.Row="16" Grid.RowSpan="2"/>
         <TextBox x:Name="uladenjump" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="uladenjump_TextChanged" Margin="94,0,0,0" Grid.Column="1"/>
         <TextBox x:Name="max_jump" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="max_jump_TextChanged" Grid.Row="1" Margin="94,0,0,0" Grid.Column="1"/>
-        <TextBox x:Name="mass_lock_factor" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="TextBox_TextChanged" Grid.Row="2" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
+        <TextBox x:Name="mass_lock_factor" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="MassLockFactor_TextChanged" Grid.Row="2" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
         <TextBox x:Name="seats" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="seats_TextChanged" Grid.Row="3" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
         <TextBox x:Name="fighter_bay" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="fighter_bay_TextChanged" Grid.Row="4" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
         <TextBox x:Name="fighter_count" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="fighter_count_TextChanged" Grid.Row="5" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
@@ -116,8 +116,8 @@
         <TextBox x:Name="size6" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="size6_TextChanged" Grid.Row="16" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
         <TextBox x:Name="size7" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="size7_TextChanged" Grid.RowSpan="2" Margin="94,1,0,0" Grid.Column="2"/>
         <TextBox x:Name="size8" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="size8_TextChanged" Grid.RowSpan="2" Margin="94,1,0,0" Grid.Column="2" Grid.Row="1"/>
-        <TextBox x:Name="Military_slot1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Margin="94,0,0,0" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2"/>
-        <TextBox x:Name="Military_slot2" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Margin="94,1,0,0" Grid.Column="2" Grid.Row="5" Grid.RowSpan="2"/>
+        <TextBox x:Name="Military_slot1" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Margin="94,0,0,0" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" TextChanged="Military_slot1_TextChanged"/>
+        <TextBox x:Name="Military_slot2" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Margin="94,1,0,0" Grid.Column="2" Grid.Row="5" Grid.RowSpan="2" TextChanged="Military_slot2_TextChanged"/>
         <TextBox x:Name="DimensionsLength" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="DimensionsLength_TextChanged" Margin="94,22,0,0" Grid.Column="2" Grid.Row="8" Grid.RowSpan="2"/>
         <TextBox x:Name="DimensionsHeight" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Margin="94,23,0,0" Grid.Column="2" Grid.Row="10" Grid.RowSpan="2" TextChanged="DimensionsHeight_TextChanged"/>
         <TextBox x:Name="DimensionsWidth" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Margin="94,22,0,0" Grid.Column="2" Grid.Row="9" Grid.RowSpan="2" TextChanged="DimensionsWidth_TextChanged"/>

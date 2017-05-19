@@ -160,7 +160,7 @@ namespace EDSCT {
                 Console.WriteLine("Ship 1: " + (string)JShip["ShipName"]);
 
                 JArray sizes = (JArray)JShip["Dimensions"];
-                string dimens = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
+                string dim = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
 
                 //Grab data and color
                 shipArmorValue1.Text = (string)JShip["Armor"];
@@ -169,8 +169,7 @@ namespace EDSCT {
                 shipShieldsValue1.Foreground = System.Windows.Media.Brushes.Lime;
                 shipManufacturer1.Text = (string)JShip["Manufacturer"];
                 shipManufacturer1.Foreground = System.Windows.Media.Brushes.Lime;
-                shipDimensions1.Text = dimens; //(string)JShip["Dimensions"].ToString().Replace("[", "").Replace("]", "").Trim();
-                //^^ Sort of prints out the Dimensions, but not on the same line. ^^
+                shipDimensions1.Text = dim;
                 shipDimensions1.Foreground = System.Windows.Media.Brushes.Lime;
                 shipLandingPadSize1.Text = (string)JShip["LandingPadSize"];
                 shipLandingPadSize1.Foreground = System.Windows.Media.Brushes.Lime;
@@ -199,7 +198,7 @@ namespace EDSCT {
                 Console.WriteLine("Ship 2: " + (string)JShip["ShipName"]);
 
                 JArray sizes = (JArray)JShip["Dimensions"];
-                string dimens = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
+                string dim = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
 
                 //Grab data and color
                 shipArmorValue2.Text = (string)JShip["Armor"];
@@ -208,8 +207,7 @@ namespace EDSCT {
                 shipShieldsValue2.Foreground = System.Windows.Media.Brushes.Lime;
                 shipManufacturer2.Text = (string)JShip["Manufacturer"];
                 shipManufacturer2.Foreground = System.Windows.Media.Brushes.Lime;
-                shipDimensions2.Text = dimens; //(string)JShip["Dimensions"].ToString().Replace("[", "").Replace("]", "").Trim();
-                //^^ Sort of prints out the Dimensions, but not on the same line. ^^
+                shipDimensions2.Text = dim;
                 shipDimensions2.Foreground = System.Windows.Media.Brushes.Lime;
                 shipLandingPadSize2.Text = (string)JShip["LandingPadSize"];
                 shipLandingPadSize2.Foreground = System.Windows.Media.Brushes.Lime;
