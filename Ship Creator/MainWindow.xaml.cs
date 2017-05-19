@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using Microsoft.Win32;
 
 namespace EDSCT {
     /// <summary>
@@ -56,7 +57,14 @@ namespace EDSCT {
         static string size4_ = "";
         static string size5_ = "";
         static string size6_ = "";
+        static string size7_ = "";
+        static string size8_ = "";
         static string military = "";
+
+        //Dimensions hotfix
+        static string L = "";
+        static string W = "";
+        static string H = "";
         #endregion
 
         public CreateYourOwn() {
@@ -203,8 +211,28 @@ namespace EDSCT {
             size6_ = size6.Text;
         }
 
+        private void size7_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+            size7_ = size7.Text;
+        }
+
+        private void size8_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+            size8_ = size8.Text;
+        }
+
         private void military_input_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
             military = military_input.Text;
+        }
+
+        private void DimensionsLength_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+            L = DimensionsLength.Text;
+        }
+
+        private void DimensionsHeight_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+            H = DimensionsHeight.Text;
+        }
+
+        private void DimensionsWidth_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+            W = DimensionsWidth.Text;
         }
 
         #endregion
@@ -212,13 +240,10 @@ namespace EDSCT {
         public static void createJson() {
 
             ship customShipCreation = new ship();
-            double L = 0;
-            double W = 0;
-            double H = 0;
 
             customShipCreation.ShipName = ShipName;
             customShipCreation.Manufacturer = manufacturer;
-            customShipCreation.Dimensions = new double[] { L, W, H };
+            customShipCreation.Dimensions = new double[] { Convert.ToDouble(L), Convert.ToDouble(W), Convert.ToDouble(H) };
             customShipCreation.LandingPadSize = landingPadSize;
             customShipCreation.Type = type_of_ship;
             customShipCreation.Cost = Int32.Parse(cost);
@@ -251,6 +276,8 @@ namespace EDSCT {
             customShipCreation.Size4 = Int32.Parse(size4_);
             customShipCreation.Size5 = Int32.Parse(size5_);
             customShipCreation.Size6 = Int32.Parse(size6_);
+            customShipCreation.Size7 = Int32.Parse(size7_);
+            customShipCreation.Size8 = Int32.Parse(size8_);
             customShipCreation.Military = Int32.Parse(military);
 
             string json = JsonConvert.SerializeObject(customShipCreation, Formatting.Indented);
@@ -270,10 +297,70 @@ namespace EDSCT {
             createJson();
         }
 
-        private void Close_Click(object sender, RoutedEventArgs e) {
-            this.Close();
+        private void LoadFile_Click(object sender, RoutedEventArgs e) {
 
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension 
+            dlg.DefaultExt = ".json";
+            dlg.Filter = "*.json|*.JSON";
+
+            // Display OpenFileDialog by calling ShowDialog method 
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox 
+            if (result == true) { // Open document 
+
+                string filename = dlg.FileName; //Grabs the path + file name
+
+                JObject JShip = JObject.Parse(File.ReadAllText(filename)); //Loads and deserializes JSON from filename variable.
+                JArray sizes = (JArray)JShip["Dimensions"]; //turns dimensions into an array that can be read from.
+
+                #region Grab Data From Deserialized / Parsed JSON
+                name.Text = (string)JShip["ShipName"];
+                Manufacturer1.Text = (string)JShip["Manufacturer"];
+                Landing_Pad_Size.Text = (string)JShip["LandingPadSize"];
+                type.Text = (string)JShip["Type"]; //type of ship
+                ship_cost.Text = (string)JShip["Cost"];
+                insurance.Text = (string)JShip["Insurance"];
+                top_speed.Text = (string)JShip["TopSpeed"];
+                max_speed.Text = (string)JShip["MaxSpeed"];
+                boost_speed.Text = (string)JShip["BoostSpeed"];
+                max_boost_speed.Text = (string)JShip["MaxBoostSpeed"];
+                manoeuvrability.Text = (string)JShip["Manoeuvrability"];
+                shields.Text = (string)JShip["Shields"];
+                armor.Text = (string)JShip["Armor"];
+                hull_mass.Text = (string)JShip["HullMass"];
+                cargo_capacity.Text = (string)JShip["CargoCapacity"];
+                max_cargo.Text = (string)JShip["MaxCargo"];
+                fuel_capacity.Text = (string)JShip["FuelCapacity"];
+                uladenjump.Text = (string)JShip["UnladenJump"];
+                max_jump.Text = (string)JShip["MaxJump"];
+                mass_lock_factor.Text = (string)JShip["MassLockFactor"];
+                seats.Text = (string)JShip["Seats"];
+                fighter_bay.Text = (string)JShip["FighterBay"];
+                fighter_count.Text = (string)JShip["FighterCount"];
+                utility.Text = (string)JShip["Utility"];
+                small.Text = (string)JShip["Small"];
+                medium.Text = (string)JShip["Medium"];
+                large.Text = (string)JShip["Large"];
+                huge.Text = (string)JShip["Huge"];
+                size1.Text = (string)JShip["Size1"];
+                size2.Text = (string)JShip["Size2"];
+                size3.Text = (string)JShip["Size3"];
+                size4.Text = (string)JShip["Size4"];
+                size5.Text = (string)JShip["Size5"];
+                size6.Text = (string)JShip["Size6"];
+                size7.Text = (string)JShip["Size7"];
+                size8.Text = (string)JShip["Size8"];
+                military_input.Text = (string)JShip["Military"];
+                DimensionsLength.Text = (string)sizes[0];
+                DimensionsWidth.Text = (string)sizes[1];
+                DimensionsHeight.Text = (string)sizes[2];
+
+                #endregion
+
+            }
         }
-
     }
 }
