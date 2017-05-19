@@ -5,11 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDSCT"
         mc:Ignorable="d"
-        Title="EDSCT - Create Your Own Ship JSON" Height="529.138" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="EDSCT - Create Your Own Ship JSON" Height="529.138" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Window.Background>
-        <ImageBrush ImageSource="Resources/background.png"/>
+        <ImageBrush ImageSource="/Ship Creator;component/background.png"/>
     </Window.Background>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300*"/>
@@ -107,7 +106,6 @@
         <Button Content="Save and Create JSON file" HorizontalAlignment="Left" VerticalAlignment="Top" Width="297" Height="66" Click="Button_Click" Grid.Row="18"/>
         <TextBox x:Name="size6" HorizontalAlignment="Left" Height="25" Margin="97,0,-3,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="size6_TextChanged" Grid.Row="16" Grid.RowSpan="2" Grid.Column="1"/>
         <TextBox x:Name="military_input" HorizontalAlignment="Left" Height="25" Margin="97,0,-3,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="military_input_TextChanged" Grid.Row="17" Grid.RowSpan="2" Grid.Column="1"/>
-        <Button Content="Close and Return" HorizontalAlignment="Left" Margin="0,0,0,-1" VerticalAlignment="Top" Width="297" Height="67" Click="Button_Click_1" Grid.Row="18" Grid.Column="1"/>
 
     </Grid>
 </Window>

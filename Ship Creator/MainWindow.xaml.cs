@@ -1,12 +1,10 @@
 ﻿using System.Windows;
 using static EDSCT.JsonHandler;
 using Newtonsoft.Json.Linq;
-using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
-using System.Windows.Controls;
 
 namespace EDSCT {
     /// <summary>
@@ -24,7 +22,6 @@ namespace EDSCT {
         string LogFile = AppFolder + "EDSCT.log";
         
         #region JSON Variables
-        static bool Horizons = false;
         static string ShipName = "";
         static string manufacturer = "";
         static string landingPadSize = "";
@@ -215,10 +212,13 @@ namespace EDSCT {
         public static void createJson() {
 
             ship customShipCreation = new ship();
+            double L = 0;
+            double W = 0;
+            double H = 0;
 
             customShipCreation.ShipName = ShipName;
             customShipCreation.Manufacturer = manufacturer;
-            customShipCreation.Dimensions = new double[] { 14.9, 21.3, 5.4 };
+            customShipCreation.Dimensions = new double[] { L, W, H };
             customShipCreation.LandingPadSize = landingPadSize;
             customShipCreation.Type = type_of_ship;
             customShipCreation.Cost = Int32.Parse(cost);
@@ -254,7 +254,15 @@ namespace EDSCT {
             customShipCreation.Military = Int32.Parse(military);
 
             string json = JsonConvert.SerializeObject(customShipCreation, Formatting.Indented);
-            File.WriteAllText(DataFolder + ShipName + ".json", json);
+            try
+            {
+                File.WriteAllText(DataFolder + ShipName + ".json", json);
+            }
+            catch(DirectoryNotFoundException)
+            {
+                Directory.CreateDirectory(DataFolder);
+                File.WriteAllText(DataFolder + ShipName + ".json", json);
+            }
 
         }
 
@@ -262,7 +270,7 @@ namespace EDSCT {
             createJson();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e) {
+        private void Close_Click(object sender, RoutedEventArgs e) {
             this.Close();
 
         }

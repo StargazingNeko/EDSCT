@@ -5,7 +5,14 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDSCT", "EDSCT\EDSCT.csproj", "{8ED891E6-013F-4E54-85D4-5E8826FD0A51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ship Creator", "Ship Creator\Ship Creator.csproj", "{95A09FED-66C5-475E-B8A2-43808A1D374D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Resources", "Resources\Resources.shproj", "{C63A5D9A-7457-490F-BEF5-FEBBC197BD0E}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Resources\Resources.projitems*{c63a5d9a-7457-490f-bef5-febbc197bd0e}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -15,6 +22,10 @@ Global
 		{8ED891E6-013F-4E54-85D4-5E8826FD0A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ED891E6-013F-4E54-85D4-5E8826FD0A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ED891E6-013F-4E54-85D4-5E8826FD0A51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95A09FED-66C5-475E-B8A2-43808A1D374D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95A09FED-66C5-475E-B8A2-43808A1D374D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95A09FED-66C5-475E-B8A2-43808A1D374D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95A09FED-66C5-475E-B8A2-43808A1D374D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

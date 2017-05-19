@@ -55,6 +55,8 @@ namespace EDSCT
             public int Size4 { get; set; }
             public int Size5 { get; set; }
             public int Size6 { get; set; }
+            public int Size7 { get; set; }
+            public int Size8 { get; set; }
             public int Military { get; set; }
         }
 
@@ -100,6 +102,8 @@ namespace EDSCT
             Sidewinder.Size4 = 0;
             Sidewinder.Size5 = 0;
             Sidewinder.Size6 = 0;
+            Sidewinder.Size7 = 0;
+            Sidewinder.Size8 = 0;
             Sidewinder.Military = 0;
 
             string json = JsonConvert.SerializeObject(Sidewinder, Formatting.Indented);

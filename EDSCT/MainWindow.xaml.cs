@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using static EDSCT.JsonHandler;
 using Newtonsoft.Json.Linq;
-using System.Linq;
 
 namespace EDSCT {
 
@@ -30,7 +29,6 @@ namespace EDSCT {
 
             InitializeComponent();
             debug("Debug Enabled");
-            defaults();
             if (!File.Exists(LogFile))
             {
                 File.AppendAllText(LogFile, LogTime + "- Application Started");
@@ -138,21 +136,6 @@ namespace EDSCT {
             }
         }
 
-        public void defaults()
-        {
-            //Box 1 default values
-            shipArmorValue1.Text = "0";
-            shipArmorValue1.Foreground = System.Windows.Media.Brushes.Blue;
-            shipShieldsValue1.Text = "0";
-            shipShieldsValue1.Foreground = System.Windows.Media.Brushes.Blue;
-
-            //Box 2 default values
-            shipArmorValue2.Text = "0";
-            shipArmorValue2.Foreground = System.Windows.Media.Brushes.Blue;
-            shipShieldsValue2.Text = "0";
-            shipShieldsValue2.Foreground = System.Windows.Media.Brushes.Blue;
-        }
-
         public void logger(string Text, bool debug = false)
         {
             //Simple logging method for writting to a "log" to test and ensure things are working how I want them
@@ -243,14 +226,6 @@ namespace EDSCT {
                 logger(" - Ship 2: File Not Found, defaulting to Sidewinder.json");
                 File.ReadAllText(DataFolder + "Sidewinder.json");
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e) {
-            Hide();
-            CreateYourOwn form2 = new CreateYourOwn();
-            form2.ShowDialog();
-            form2 = null;
-            Show();
         }
     }
 }
