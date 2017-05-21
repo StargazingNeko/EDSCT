@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using System.Windows.Controls;
+using System.Linq;
 
 namespace EDSCT {
     /// <summary>
@@ -12,12 +14,14 @@ namespace EDSCT {
     /// </summary>
     public partial class CreateYourOwn : Window {
 
-        //Variables
+        #region Variables and Objects
         public Dictionary<string, JObject> _shipDict = new Dictionary<string, JObject>();
 
         static string AppFolder = AppDomain.CurrentDomain.BaseDirectory;
         public static string DataFolder = AppFolder + "Data\\";
-        
+        #endregion
+
+
         #region JSON Variables
         static string ShipName = "";
         static string manufacturer = "";
@@ -73,7 +77,7 @@ namespace EDSCT {
         }
 
 
-       #region On change events.
+        #region On change events.
 
         private void name_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
             ShipName = name.Text;
@@ -227,18 +231,15 @@ namespace EDSCT {
             W = DimensionsWidth.Text;
         }
 
-        private void Military_slot1_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
+        private void Military_slot1_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
             military_slot1 = Military_slot1.Text;
         }
 
-        private void Military_slot2_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
+        private void Military_slot2_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
             military_slot2 = Military_slot2.Text;
         }
 
-        private void fighter_bay_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
+        private void fighter_bay_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
             fighterBay = fighter_bay.SelectedItem.ToString();
         }
 
@@ -289,12 +290,9 @@ namespace EDSCT {
             customShipCreation.Military_Slot2 = Int32.Parse(military_slot2);
 
             string json = JsonConvert.SerializeObject(customShipCreation, Formatting.Indented);
-            try
-            {
+            try {
                 File.WriteAllText(DataFolder + ShipName + ".json", json);
-            }
-            catch(DirectoryNotFoundException)
-            {
+            } catch (DirectoryNotFoundException) {
                 Directory.CreateDirectory(DataFolder);
                 File.WriteAllText(DataFolder + ShipName + ".json", json);
             }
@@ -302,6 +300,19 @@ namespace EDSCT {
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
+
+            var textBoxes = new TextBox[] { name, Manufacturer1, Landing_Pad_Size, type, ship_cost, insurance, top_speed, max_speed, boost_speed, max_boost_speed,
+                                            manoeuvrability, shields, armor, hull_mass, cargo_capacity, max_cargo, fuel_capacity, uladenjump, max_jump, mass_lock_factor,
+                                            seats, fighter_count, utility, small, medium, huge, size1, size2, size3, size4, size5, size6, size7, size8, Military_slot1,
+                                            Military_slot2, DimensionsLength, DimensionsWidth, DimensionsHeight };
+
+            if (textBoxes.Any(tb => tb.Text == String.Empty)) {
+                MessageBoxResult result = MessageBox.Show(this, "Please fill out all fields!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.OK) {
+                    return;
+                }
+            }
+
             createJson();
         }
 
@@ -371,5 +382,6 @@ namespace EDSCT {
 
             }
         }
+
     }
 }

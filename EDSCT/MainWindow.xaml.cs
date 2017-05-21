@@ -11,9 +11,8 @@ namespace EDSCT {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-     
-    public partial class MainWindow : Window
-    {
+
+    public partial class MainWindow : Window {
 
         #region Variables and Objects
 
@@ -31,32 +30,24 @@ namespace EDSCT {
 
         #endregion
 
-        public MainWindow()
-        {
+        public MainWindow() {
 
             InitializeComponent();
             debug("Debug Enabled");
-            if (!File.Exists(LogFile))
-            {
+            if (!File.Exists(LogFile)) {
                 File.AppendAllText(LogFile, LogTime + "- Application Started");
-            }
-            else
-            {
+            } else {
                 logger("- Application Started");
             }
 
-            if (!Directory.Exists(DataFolder))
-            {
+            if (!Directory.Exists(DataFolder)) {
                 logger("- Data Folder not found, creating it now");
                 Directory.CreateDirectory("Data");
                 logger("- Creating Sidewinder example JSON");
                 createExampleJson();
-            }
-            else
-            {
+            } else {
                 logger("- Data Folder found");
-                if (!File.Exists(DataFolder + "Sidewinder.json"))
-                {
+                if (!File.Exists(DataFolder + "Sidewinder.json")) {
                     logger(" - Sidewinder example JSON missing, creating it now");
                     createExampleJson();
                 }
@@ -64,132 +55,110 @@ namespace EDSCT {
                 addBoxItems();
             }
 
+            watchingFolder = DataFolder; //the folder to be watched
+            fs = new FileSystemWatcher(watchingFolder, "*.json*"); //initialize the filesystem watcher
+
+            fs.EnableRaisingEvents = true;
+            fs.IncludeSubdirectories = true;
+
+            fs.Created += new FileSystemEventHandler(newfile); //This event will check for  new files added to the watching folder
+            fs.Deleted += new FileSystemEventHandler(fs_Deleted); //this event will check for any deletion of file in the watching folder
+
         }
 
-        public void addBoxItems()
-        {
+        public void addBoxItems() {
 
             string[] shipPaths = Directory.GetFiles(DataFolder, "*.json");
 
-            foreach (string ship in shipPaths)
-            {
+            foreach (string ship in shipPaths) {
                 JObject JShip = JObject.Parse(File.ReadAllText(ship));
                 _shipDict.Add(Path.GetFileNameWithoutExtension(ship), JShip);
                 logger("- Found: " + JShip["ShipName"] + ".json, loading it.");
 
                 string[] boxItems = new string[] { ship };
 
-                foreach (var shipName in boxItems)
-                {
+                foreach (var shipName in boxItems) {
                     shipBox1.Items.Add(Path.GetFileNameWithoutExtension(shipName));
                     shipBox2.Items.Add(Path.GetFileNameWithoutExtension(shipName));
                 }
             }
         }
 
-        private void debug(string text = null)
-        {
+        private void debug(string text = null) {
 
             bool isDebug;
             string debugFile = AppFolder + "debug";
 
-            if (File.Exists(debugFile))
-            {
+            if (File.Exists(debugFile)) {
                 isDebug = true;
-                try
-                {
+                try {
                     ship debugData = JsonConvert.DeserializeObject<ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
                     testBox.Text = debugData.ShipName;
-                }
-                catch (DirectoryNotFoundException)
-                {
+                } catch (DirectoryNotFoundException) {
                     Directory.CreateDirectory("Data");
                     createExampleJson();
                     ship debugData = JsonConvert.DeserializeObject<ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
                     testBox.Text = debugData.ShipName;
-                }
-                catch (FileNotFoundException)
-                {
-                    if (!Directory.Exists(DataFolder))
-                    {
+                } catch (FileNotFoundException) {
+                    if (!Directory.Exists(DataFolder)) {
                         Directory.CreateDirectory("Data");
                     }
                     createExampleJson();
                     ship debugData = JsonConvert.DeserializeObject<ship>(File.ReadAllText(DataFolder + @"Sidewinder.json"));
                     testBox.Text = debugData.ShipName;
                 }
-            }
-            else
-            {
+            } else {
                 isDebug = false;
             }
 
-            if (!isDebug)
-            {
+            if (!isDebug) {
                 testBox.Visibility = Visibility.Hidden;
-            }
-            else
-            {
+            } else {
                 testBox.Visibility = Visibility.Visible;
             }
 
-            if (text != null)
-            {
-                if (isDebug)
-                {
+            if (text != null) {
+                if (isDebug) {
                     logger(text, isDebug);
                 }
             }
         }
 
-        public void logger(string Text, bool debug = false)
-        {
+        public void logger(string Text, bool debug = false) {
             //Simple logging method for writting to a "log" to test and ensure things are working how I want them
-            if (!debug)
-            {
+            if (!debug) {
                 File.AppendAllText(LogFile, LogTimeNewLine + " " + Text);
-            }
-            else
-            {
+            } else {
                 File.AppendAllText(LogFile, LogTimeNewLine + " - Debug: " + Text);
             }
 
         }
 
-        private void shipBox1_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            try
-            {
+        private void shipBox1_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+            try {
                 JObject JShip = JObject.Parse(File.ReadAllText(DataFolder + shipBox1.SelectedItem.ToString() + ".json"));
                 logger(" - Ship 1: " + (string)JShip["ShipName"]);
                 Console.WriteLine("Ship 1: " + (string)JShip["ShipName"]);
 
-                JArray sizes = (JArray)JShip["Dimensions"];
-                string dim = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
+                //JArray sizes = (JArray)JShip["Dimensions"];
+                //string dim = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
 
-            }
-            catch (FileNotFoundException)
-            {
+                testBox.Text = (string)JShip["ShipName"]; // check if values work in real time
+
+            } catch (FileNotFoundException) {
                 Console.WriteLine(" Ship 1: File Not Found, defaulting to Sidewinder.json");
                 logger("- Ship 1: File Not Found, defaulting to Sidewinder.json");
                 File.ReadAllText(DataFolder + "Sidewinder.json");
             }
         }
 
-        private void shipBox2_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            try
-            {
+        private void shipBox2_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+            try {
                 JObject JShip = JObject.Parse(File.ReadAllText(DataFolder + shipBox2.SelectedItem.ToString() + ".json"));
                 logger("Ship 2: " + (string)JShip["ShipName"], true);
                 Console.WriteLine("Ship 2: " + (string)JShip["ShipName"]);
 
-                JArray sizes = (JArray)JShip["Dimensions"];
-                string dim = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
-
-            }
-            catch (FileNotFoundException)
-            {
+            } catch (FileNotFoundException) {
                 Console.WriteLine("Ship 2: File Not Found, defaulting to Sidewinder.json");
                 logger(" - Ship 2: File Not Found, defaulting to Sidewinder.json");
                 File.ReadAllText(DataFolder + "Sidewinder.json");
@@ -201,7 +170,7 @@ namespace EDSCT {
             try {
                 //to avoid same process to be repeated ,if the time between two events is more   than 1000 milli seconds only the second process will be considered 
                 if (DateTime.Now.Subtract(fsLastRaised).TotalMilliseconds > 1000) { //Greater than 1 second
-                    
+
                     //to get the newly created file name and extension and also the name of the event occured in the watching folder
                     string CreatedFileName = Eventocc.Name;
                     FileInfo createdFile = new FileInfo(CreatedFileName);
