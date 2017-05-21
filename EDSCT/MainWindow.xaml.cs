@@ -143,7 +143,7 @@ namespace EDSCT {
                 //JArray sizes = (JArray)JShip["Dimensions"];
                 //string dim = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
 
-                testBox.Text = (string)JShip["ShipName"]; // check if values work in real time
+                testBox.Text = (string)JShip["Armor"]; // check if values work in real time
 
             } catch (FileNotFoundException) {
                 Console.WriteLine(" Ship 1: File Not Found, defaulting to Sidewinder.json");
@@ -201,21 +201,67 @@ namespace EDSCT {
 
         #region File Deleted
         protected void fs_Deleted(object fschanged, FileSystemEventArgs changeEvent) {
-            try {
+            try
+            {
 
-                if (DateTime.Now.Subtract(fsLastRaised).TotalMilliseconds > 1000) {
+                if (DateTime.Now.Subtract(fsLastRaised).TotalMilliseconds > 1000)
+                {
                     fsLastRaised = DateTime.Now;
                     System.Threading.Thread.Sleep(100);
 
-                    this.Dispatcher.Invoke((Action)(() => {  //Dispatcher to remove items from the combobox
+                    //Dispatcher to remove items from the combobox
+                    this.Dispatcher.Invoke((Action)(() => {
                         shipBox1.Items.Remove(Path.GetFileNameWithoutExtension(changeEvent.Name));
                         shipBox2.Items.Remove(Path.GetFileNameWithoutExtension(changeEvent.Name));
+                    }));
+                }
+            }
+            catch (NullReferenceException)
+            {
+
+                if (!File.Exists(DataFolder + "Sidewinder.json"))
+                {
+                    this.Dispatcher.Invoke((Action)(() =>
+                    {
+                        if (shipBox1.Items.Contains("Sidewinder"))
+                        {
+                            shipBox1.Items.Remove("Sidewinder");
+                        }
+
+                        if (shipBox2.Items.Contains("Sidewinder"))
+                        {
+                            shipBox2.Items.Remove("Sidewinder");
+                        }
+                    }));
+
+                    MessageBox.Show("Current file in use has been deleted and Sidewinder is missing, creating Sidewinder.json and selecting it. \nYou will most likely only see this error once!");
+                    createExampleJson();
+                }
+                else
+                {
+                    MessageBox.Show("File in use has been deleted, selecting Sidewinder.");
+
+                    this.Dispatcher.Invoke((Action)(() =>
+                    {
+                        if (!shipBox1.Items.Contains("Sidewinder"))
+                        {
+                            shipBox1.Items.Add("Sidewinder");
+                        }
+
+                        if (!shipBox2.Items.Contains("Sidewinder"))
+                        {
+                            shipBox2.Items.Add("Sidewinder");
+                        }
 
                     }));
                 }
-            } catch (Exception ex) {
-                MessageBox.Show(ex.ToString());
             }
+
+            this.Dispatcher.Invoke((Action)(() =>
+            {
+                shipBox1.SelectedItem = "Sidewinder";
+                shipBox2.SelectedItem = "Sidewinder";
+            }));
         }
 
         #endregion
