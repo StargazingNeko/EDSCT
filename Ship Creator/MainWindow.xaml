@@ -119,8 +119,8 @@
         <TextBox x:Name="DimensionsLength" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="DimensionsLength_TextChanged" Margin="94,22,0,0" Grid.Column="2" Grid.Row="8" Grid.RowSpan="2"/>
         <TextBox x:Name="DimensionsHeight" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Margin="94,23,0,0" Grid.Column="2" Grid.Row="10" Grid.RowSpan="2" TextChanged="DimensionsHeight_TextChanged"/>
         <TextBox x:Name="DimensionsWidth" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Margin="94,22,0,0" Grid.Column="2" Grid.Row="9" Grid.RowSpan="2" TextChanged="DimensionsWidth_TextChanged"/>
-        <Button Content="Save and Create JSON file" HorizontalAlignment="Left" VerticalAlignment="Top" Width="297" Height="67" Click="Button_Click" Grid.Row="17" Grid.Column="1" Margin="0,23,0,0" Grid.RowSpan="2"/>
-        <Button x:Name="LoadFile" Content="Load JSON File" HorizontalAlignment="Left" VerticalAlignment="Top" Width="297" Height="67" Grid.Row="18" Grid.Column="2" Margin="0,0,0,-1" Click="LoadFile_Click"/>
+        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="297" Height="67" Click="Button_Click" Grid.Row="17" Grid.Column="1" Margin="0,23,0,0" Grid.RowSpan="2"/>
+        <Button x:Name="LoadFile" Content="Load" HorizontalAlignment="Left" VerticalAlignment="Top" Width="297" Height="67" Grid.Row="18" Grid.Column="2" Margin="0,0,0,-1" Click="LoadFile_Click"/>
         <ComboBox Margin="94,0,0,23" x:Name="fighter_bay" Grid.Row="4" Grid.Column="1"  HorizontalAlignment="Left" Width="203" Grid.RowSpan="2" SelectionChanged="fighter_bay_SelectionChanged"/>
     </Grid>
 </Window>
