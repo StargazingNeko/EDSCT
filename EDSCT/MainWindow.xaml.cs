@@ -11,18 +11,25 @@ namespace EDSCT {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+     
     public partial class MainWindow : Window
     {
 
-        public Dictionary<string, JObject> _shipDict = new Dictionary<string, JObject>();
+        #region Variables and Objects
 
-        //variables
+        public Dictionary<string, JObject> _shipDict = new Dictionary<string, JObject>();
+        FileSystemWatcher fs;
+        DateTime fsLastRaised;
+
+        public string watchingFolder;
         public string LogTime = DateTime.Now.ToString("h:mm:ss tt");
         public string LogTimeNewLine = DateTime.Now.ToString("\nh:mm:ss tt");
         static string AppFolder = AppDomain.CurrentDomain.BaseDirectory;
         public static string DataFolder = AppFolder + "Data\\";
         string LogFile = AppFolder + "EDSCT.log";
 
+
+        #endregion
 
         public MainWindow()
         {
@@ -160,7 +167,6 @@ namespace EDSCT {
                 JArray sizes = (JArray)JShip["Dimensions"];
                 string dim = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
 
-                //Grab data and color
             }
             catch (FileNotFoundException)
             {
@@ -181,7 +187,6 @@ namespace EDSCT {
                 JArray sizes = (JArray)JShip["Dimensions"];
                 string dim = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
 
-                //Grab data and color
             }
             catch (FileNotFoundException)
             {
@@ -190,5 +195,61 @@ namespace EDSCT {
                 File.ReadAllText(DataFolder + "Sidewinder.json");
             }
         }
+
+        #region File Added
+        protected void newfile(object fscreated, FileSystemEventArgs Eventocc) {
+            try {
+                //to avoid same process to be repeated ,if the time between two events is more   than 1000 milli seconds only the second process will be considered 
+                if (DateTime.Now.Subtract(fsLastRaised).TotalMilliseconds > 1000) { //Greater than 1 second
+                    
+                    //to get the newly created file name and extension and also the name of the event occured in the watching folder
+                    string CreatedFileName = Eventocc.Name;
+                    FileInfo createdFile = new FileInfo(CreatedFileName);
+                    string extension = createdFile.Extension;
+                    string eventoccured = Eventocc.ChangeType.ToString();
+
+                    fsLastRaised = DateTime.Now; //to note the time of event occured
+                    System.Threading.Thread.Sleep(100); //Delay is given to the thread for avoiding same process to be repeated
+
+                    this.Dispatcher.Invoke((Action)(() => { //dispatcher to add items to combobox
+                        if (!shipBox1.Items.Contains(CreatedFileName)) {
+                            shipBox1.Items.Add(Path.GetFileNameWithoutExtension(CreatedFileName));
+                        }
+
+                        if (!shipBox2.Items.Contains(CreatedFileName)) {
+                            shipBox2.Items.Add(Path.GetFileNameWithoutExtension(CreatedFileName));
+                        }
+
+                    }));
+
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.ToString()); //Prints the error message in a box.
+            } finally {
+            }
+        }
+        #endregion
+
+        #region File Deleted
+        protected void fs_Deleted(object fschanged, FileSystemEventArgs changeEvent) {
+            try {
+
+                if (DateTime.Now.Subtract(fsLastRaised).TotalMilliseconds > 1000) {
+                    fsLastRaised = DateTime.Now;
+                    System.Threading.Thread.Sleep(100);
+
+                    this.Dispatcher.Invoke((Action)(() => {  //Dispatcher to remove items from the combobox
+                        shipBox1.Items.Remove(Path.GetFileNameWithoutExtension(changeEvent.Name));
+                        shipBox2.Items.Remove(Path.GetFileNameWithoutExtension(changeEvent.Name));
+
+                    }));
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
     }
 }
