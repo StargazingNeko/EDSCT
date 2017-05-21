@@ -7,11 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDSCT", "EDSCT\EDSCT.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ship Creator", "Ship Creator\Ship Creator.csproj", "{95A09FED-66C5-475E-B8A2-43808A1D374D}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedItems", "Resources\SharedItems.shproj", "{C63A5D9A-7457-490F-BEF5-FEBBC197BD0E}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedItems", "SharedItems\SharedItems.shproj", "{9E198A81-D3A1-4A33-93D5-3C6CA528562F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Resources\Resources.projitems*{c63a5d9a-7457-490f-bef5-febbc197bd0e}*SharedItemsImports = 13
+		SharedItems\SharedItems.projitems*{9e198a81-d3a1-4a33-93d5-3c6ca528562f}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
