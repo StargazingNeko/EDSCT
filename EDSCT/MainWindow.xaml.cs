@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using static EDSCT.JsonHandler;
+using System.Collections.ObjectModel;
 
 namespace EDSCT {
 
@@ -140,10 +141,52 @@ namespace EDSCT {
                 logger(" - Ship 1: " + (string)JShip["ShipName"]);
                 Console.WriteLine("Ship 1: " + (string)JShip["ShipName"]);
 
-                //JArray sizes = (JArray)JShip["Dimensions"];
-                //string dim = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
+                JArray sizes = (JArray)JShip["Dimensions"];
+                string dimensions = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
 
-                testBox.Text = (string)JShip["Armor"]; // check if values work in real time
+                #region Add to DataGrid
+                var list = new ObservableCollection<ship>();
+                list.Add(new ship() { A = "Ship Name", B = (string)JShip["ShipName"] });
+                list.Add(new ship() { A = "Manufacturer", B = (string)JShip["Manufacturer"], });
+                list.Add(new ship() { A = "Dimensions", B = dimensions });
+                list.Add(new ship() { A = "Landing Pad Size", B = (string)JShip["LandingPadSize"], });
+                list.Add(new ship() { A = "Type", B = (string)JShip["Type"] });
+                list.Add(new ship() { A = "Cost", B = (string)JShip["Cost"] });
+                list.Add(new ship() { A = "Insurance", B = (string)JShip["Insurance"] });
+                list.Add(new ship() { A = "Top Speed", B = (string)JShip["TopSpeed"] });
+                list.Add(new ship() { A = "Max Speed", B = (string)JShip["MaxSpeed"] });
+                list.Add(new ship() { A = "Boost Speed", B = (string)JShip["BoostSpeed"] });
+                list.Add(new ship() { A = "Max Boost Speed", B = (string)JShip["MaxBoostSpeed"] });
+                list.Add(new ship() { A = "Manoeuvrability", B = (string)JShip["Manoeuvrability"] });
+                list.Add(new ship() { A = "Shields", B = (string)JShip["Shields"] });
+                list.Add(new ship() { A = "Armor", B = (string)JShip["Armor"] });
+                list.Add(new ship() { A = "Hull Mass", B = (string)JShip["HullMass"] });
+                list.Add(new ship() { A = "Cargo Capacity", B = (string)JShip["CargoCapacity"] });
+                list.Add(new ship() { A = "Max Cargo", B = (string)JShip["MaxCargo"] });
+                list.Add(new ship() { A = "Fuel Capacity", B = (string)JShip["FuelCapacity"] });
+                list.Add(new ship() { A = "Unladen Jump", B = (string)JShip["UnladenJump"] });
+                list.Add(new ship() { A = "Max Jump", B = (string)JShip["MaxJump"] });
+                list.Add(new ship() { A = "Mass Lock Factor", B = (string)JShip["MassLockFactor"] });
+                list.Add(new ship() { A = "Seats", B = (string)JShip["Seats"] });
+                list.Add(new ship() { A = "FighterBay", B = (string)JShip["FighterBay"] });
+                list.Add(new ship() { A = "FighterCount", B = (string)JShip["FighterCount"] });
+                list.Add(new ship() { A = "Utility", B = (string)JShip["Utility"] });
+                list.Add(new ship() { A = "Small", B = (string)JShip["Small"] });
+                list.Add(new ship() { A = "Medium", B = (string)JShip["Medium"] });
+                list.Add(new ship() { A = "Large", B = (string)JShip["Large"] });
+                list.Add(new ship() { A = "Huge", B = (string)JShip["Huge"] });
+                list.Add(new ship() { A = "Size 1", B = (string)JShip["Size1"] });
+                list.Add(new ship() { A = "Size 2", B = (string)JShip["Size2"] });
+                list.Add(new ship() { A = "Size 3", B = (string)JShip["Size3"] });
+                list.Add(new ship() { A = "Size 4", B = (string)JShip["Size4"] });
+                list.Add(new ship() { A = "Size 5", B = (string)JShip["Size5"] });
+                list.Add(new ship() { A = "Size 6", B = (string)JShip["Size6"] });
+                list.Add(new ship() { A = "Size 7", B = (string)JShip["Size7"] });
+                list.Add(new ship() { A = "Size 8", B = (string)JShip["Size8"] });
+                list.Add(new ship() { A = "Military Slot 1", B = (string)JShip["Military_Slot1"] });
+                list.Add(new ship() { A = "Military Slot 2", B = (string)JShip["Military_Slot2"] });
+                this.dataGrid1.ItemsSource = list;
+                #endregion
 
             } catch (FileNotFoundException) {
                 Console.WriteLine(" Ship 1: File Not Found, defaulting to Sidewinder.json");
@@ -157,6 +200,53 @@ namespace EDSCT {
                 JObject JShip = JObject.Parse(File.ReadAllText(DataFolder + shipBox2.SelectedItem.ToString() + ".json"));
                 logger("Ship 2: " + (string)JShip["ShipName"], true);
                 Console.WriteLine("Ship 2: " + (string)JShip["ShipName"]);
+
+                JArray sizes = (JArray)JShip["Dimensions"];
+                string dimensions = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
+
+                #region Add to DataGrid
+                var list = new ObservableCollection<ship>();
+                list.Add(new ship() { A = "Ship Name", B = (string)JShip["ShipName"] });
+                list.Add(new ship() { A = "Manufacturer", B = (string)JShip["Manufacturer"], });
+                list.Add(new ship() { A = "Dimensions", B = dimensions });
+                list.Add(new ship() { A = "Landing Pad Size", B = (string)JShip["LandingPadSize"], });
+                list.Add(new ship() { A = "Type", B = (string)JShip["Type"] });
+                list.Add(new ship() { A = "Cost", B = (string)JShip["Cost"] });
+                list.Add(new ship() { A = "Insurance", B = (string)JShip["Insurance"] });
+                list.Add(new ship() { A = "Top Speed", B = (string)JShip["TopSpeed"] });
+                list.Add(new ship() { A = "Max Speed", B = (string)JShip["MaxSpeed"] });
+                list.Add(new ship() { A = "Boost Speed", B = (string)JShip["BoostSpeed"] });
+                list.Add(new ship() { A = "Max Boost Speed", B = (string)JShip["MaxBoostSpeed"] });
+                list.Add(new ship() { A = "Manoeuvrability", B = (string)JShip["Manoeuvrability"] });
+                list.Add(new ship() { A = "Shields", B = (string)JShip["Shields"] });
+                list.Add(new ship() { A = "Armor", B = (string)JShip["Armor"] });
+                list.Add(new ship() { A = "Hull Mass", B = (string)JShip["HullMass"] });
+                list.Add(new ship() { A = "Cargo Capacity", B = (string)JShip["CargoCapacity"] });
+                list.Add(new ship() { A = "Max Cargo", B = (string)JShip["MaxCargo"] });
+                list.Add(new ship() { A = "Fuel Capacity", B = (string)JShip["FuelCapacity"] });
+                list.Add(new ship() { A = "Unladen Jump", B = (string)JShip["UnladenJump"] });
+                list.Add(new ship() { A = "Max Jump", B = (string)JShip["MaxJump"] });
+                list.Add(new ship() { A = "Mass Lock Factor", B = (string)JShip["MassLockFactor"] });
+                list.Add(new ship() { A = "Seats", B = (string)JShip["Seats"] });
+                list.Add(new ship() { A = "FighterBay", B = (string)JShip["FighterBay"] });
+                list.Add(new ship() { A = "FighterCount", B = (string)JShip["FighterCount"] });
+                list.Add(new ship() { A = "Utility", B = (string)JShip["Utility"] });
+                list.Add(new ship() { A = "Small", B = (string)JShip["Small"] });
+                list.Add(new ship() { A = "Medium", B = (string)JShip["Medium"] });
+                list.Add(new ship() { A = "Large", B = (string)JShip["Large"] });
+                list.Add(new ship() { A = "Huge", B = (string)JShip["Huge"] });
+                list.Add(new ship() { A = "Size 1", B = (string)JShip["Size1"] });
+                list.Add(new ship() { A = "Size 2", B = (string)JShip["Size2"] });
+                list.Add(new ship() { A = "Size 3", B = (string)JShip["Size3"] });
+                list.Add(new ship() { A = "Size 4", B = (string)JShip["Size4"] });
+                list.Add(new ship() { A = "Size 5", B = (string)JShip["Size5"] });
+                list.Add(new ship() { A = "Size 6", B = (string)JShip["Size6"] });
+                list.Add(new ship() { A = "Size 7", B = (string)JShip["Size7"] });
+                list.Add(new ship() { A = "Size 8", B = (string)JShip["Size8"] });
+                list.Add(new ship() { A = "Military Slot 1", B = (string)JShip["Military_Slot1"] });
+                list.Add(new ship() { A = "Military Slot 2", B = (string)JShip["Military_Slot2"] });
+                this.dataGrid2.ItemsSource = list;
+                #endregion
 
             } catch (FileNotFoundException) {
                 Console.WriteLine("Ship 2: File Not Found, defaulting to Sidewinder.json");
@@ -201,11 +291,9 @@ namespace EDSCT {
 
         #region File Deleted
         protected void fs_Deleted(object fschanged, FileSystemEventArgs changeEvent) {
-            try
-            {
+            try {
 
-                if (DateTime.Now.Subtract(fsLastRaised).TotalMilliseconds > 1000)
-                {
+                if (DateTime.Now.Subtract(fsLastRaised).TotalMilliseconds > 1000) {
                     fsLastRaised = DateTime.Now;
                     System.Threading.Thread.Sleep(100);
 
@@ -215,51 +303,38 @@ namespace EDSCT {
                         shipBox2.Items.Remove(Path.GetFileNameWithoutExtension(changeEvent.Name));
                     }));
                 }
-            }
-            catch (NullReferenceException)
-            {
+            } catch (NullReferenceException) {
                 try {
                     this.Dispatcher.Invoke((Action)(() => {
                         shipBox1.Items.Remove(Path.GetFileNameWithoutExtension(changeEvent.Name));
                         shipBox2.Items.Remove(Path.GetFileNameWithoutExtension(changeEvent.Name));
                     }));
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
 
                 }
 
-                if (!File.Exists(DataFolder + "Sidewinder.json"))
-                {
-                    this.Dispatcher.Invoke((Action)(() =>
-                    {
-                        if (shipBox1.Items.Contains("Sidewinder"))
-                        {
+                if (!File.Exists(DataFolder + "Sidewinder.json")) {
+                    this.Dispatcher.Invoke((Action)(() => {
+                        if (shipBox1.Items.Contains("Sidewinder")) {
                             shipBox1.Items.Remove("Sidewinder");
                         }
 
-                        if (shipBox2.Items.Contains("Sidewinder"))
-                        {
+                        if (shipBox2.Items.Contains("Sidewinder")) {
                             shipBox2.Items.Remove("Sidewinder");
                         }
                     }));
 
                     MessageBox.Show("Current file in use has been deleted and Sidewinder is missing, creating Sidewinder.json and selecting it. \nYou will most likely only see this error once!");
                     createExampleJson();
-                }
-                else
-                {
+                } else {
                     MessageBox.Show("File in use has been deleted, selecting Sidewinder.");
 
-                    this.Dispatcher.Invoke((Action)(() =>
-                    {
-                        if (!shipBox1.Items.Contains("Sidewinder"))
-                        {
+                    this.Dispatcher.Invoke((Action)(() => {
+                        if (!shipBox1.Items.Contains("Sidewinder")) {
                             shipBox1.Items.Add("Sidewinder");
                         }
 
-                        if (!shipBox2.Items.Contains("Sidewinder"))
-                        {
+                        if (!shipBox2.Items.Contains("Sidewinder")) {
                             shipBox2.Items.Add("Sidewinder");
                         }
 
@@ -267,8 +342,7 @@ namespace EDSCT {
                 }
             }
 
-            this.Dispatcher.Invoke((Action)(() =>
-            {
+            this.Dispatcher.Invoke((Action)(() => {
                 shipBox1.SelectedItem = "Sidewinder";
                 shipBox2.SelectedItem = "Sidewinder";
             }));

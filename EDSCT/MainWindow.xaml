@@ -6,21 +6,31 @@
         xmlns:local="clr-namespace:EDSCT"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="EDSCT.MainWindow"
         mc:Ignorable="d"
-        Title="EDSCT - Elite Dangerous Ship Comparison Tool" WindowStartupLocation="Manual" Margin="0" Height="600" Width="800" MinWidth="800" MinHeight="600" Grid.IsSharedSizeScope="True" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" SnapsToDevicePixels="True" Visibility="Visible">
+        Title="EDSCT - Elite Dangerous Ship Comparison Tool" WindowStartupLocation="Manual" Margin="0" Height="800" Width="800" MinWidth="800" MinHeight="600" Grid.IsSharedSizeScope="True" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" SnapsToDevicePixels="True" Visibility="Visible">
     <Window.Background>
         <ImageBrush ImageSource="/EDSCT;component/background.png"/>
     </Window.Background>
     <Grid Margin="0,0,0,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="800*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0"/>
-            <RowDefinition Height="600"/>
-        </Grid.RowDefinitions>
-        <ComboBox x:Name="shipBox1" Margin="0,75,500,0" Height="18" Width="200" VerticalAlignment="Top" HorizontalAlignment="Center" ToolTip="Select first ship for comparison" FontFamily="Micra" FontWeight="Bold" SelectionChanged="shipBox1_SelectionChanged" Grid.Column="1" Grid.Row="1"/>
-        <ComboBox x:Name="shipBox2" Margin="500,75,0,0" Height="18" Width="200" VerticalAlignment="Top" HorizontalAlignment="Center" ToolTip="Select second ship for comparison" FontFamily="Micra" FontWeight="Bold" SelectionChanged="shipBox2_SelectionChanged" Grid.Column="1" Grid.Row="2"/>
+
+        <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Background="Transparent" RowBackground="Transparent" Width="400px" Height="697" Margin="0,75,0,-1">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header ="Label" Binding="{Binding A}" Width="*" Foreground="White" FontWeight="Bold"/>
+                <DataGridTextColumn Header ="Value" Binding="{Binding B}" Width="*" Foreground="White" FontWeight="Bold"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Left" x:Name="dataGrid2" VerticalAlignment="Top" Background="Transparent" RowBackground="Transparent" Width="400px" Height="697" Margin="400,75,0,-1">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header ="Label" Binding="{Binding A}" Width="*" Foreground="White" FontWeight="Bold"/>
+                <DataGridTextColumn Header ="Value" Binding="{Binding B}" Width="*" Foreground="White" FontWeight="Bold"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ComboBox x:Name="shipBox1" Margin="100,28,494,0" Height="18" Width="200" VerticalAlignment="Top" HorizontalAlignment="Center" ToolTip="Select first ship for comparison" FontFamily="Micra" FontWeight="Bold" SelectionChanged="shipBox1_SelectionChanged"/>
+        <ComboBox x:Name="shipBox2" Margin="496,28,98,0" Height="18" Width="200" VerticalAlignment="Top" HorizontalAlignment="Center" ToolTip="Select second ship for comparison" FontFamily="Micra" FontWeight="Bold" SelectionChanged="shipBox2_SelectionChanged"/>
         <TextBox x:Name="testBox" Margin="0,500,0,0" HorizontalAlignment="Center" Height="25" Width="250" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontWeight="Bold" Visibility="Hidden" Grid.Column="1" Grid.Row="1"/>
+
     </Grid>
 </Window>
+
+    
