@@ -11,7 +11,7 @@ Elite Dangerous Ship Comparison Tool
 1. Launch the Ship Creator.
 2. Fill out all the details.
 3. Click "Save".
-* NOTE: If you have the Ship Creator outside of EDSCT's folder you will need to copy or move the Data folder from the Ship Creators folder to EDSCT, otherwise if you have them in the same folder they will share the same data folder.
+* NOTE: If you have the Ship Creator outside of EDSCT's folder you will need to copy or move the data folder from the Ship Creator folder to the EDSCT folder, otherwise if you have them in the same folder they will share the same data folder.
 
 ## How to update outdated/incorrect ships
 1. Launch the Ship Creator.
