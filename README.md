@@ -29,7 +29,7 @@ Elite Dangerous Ship Comparison Tool
 
 ## Images: (Subject to change)
 
-[Picture of Ship Comparer without values](http://i.imgur.com/ovSnVdM.png)
-[Picture of Ship Comparer with values](http://i.imgur.com/pav4F2S.png)
-[Picture of Ship Creator without values](http://i.imgur.com/OGmXfXR.png)
-[Picture of Ship Creator without values](http://i.imgur.com/MfcKkcA.png)
+![Picture of Ship Comparer without values](http://i.imgur.com/ovSnVdM.png)
+![Picture of Ship Comparer with values](http://i.imgur.com/pav4F2S.png)
+![Picture of Ship Creator without values](http://i.imgur.com/OGmXfXR.png)
+![Picture of Ship Creator without values](http://i.imgur.com/MfcKkcA.png)
