@@ -59,6 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="..\SharedItems\Handlers\JsonHandler.cs">
+      <Link>JsonHandler.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -101,13 +104,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EDSCT\EDSCT.csproj">
-      <Project>{8ed891e6-013f-4e54-85d4-5e8826fd0a51}</Project>
-      <Name>EDSCT</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="..\Resources\Resources\background.png">
+    <Resource Include="..\SharedItems\Resources\background.png">
       <Link>background.png</Link>
     </Resource>
   </ItemGroup>

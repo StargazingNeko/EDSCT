@@ -105,7 +105,7 @@
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="..\Resources\Resources\background.png">
+    <Resource Include="..\SharedItems\Resources\background.png">
       <Link>background.png</Link>
     </Resource>
   </ItemGroup>

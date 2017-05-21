@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDSCT", "EDSCT\EDSCT.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ship Creator", "Ship Creator\Ship Creator.csproj", "{95A09FED-66C5-475E-B8A2-43808A1D374D}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Resources", "Resources\Resources.shproj", "{C63A5D9A-7457-490F-BEF5-FEBBC197BD0E}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedItems", "Resources\SharedItems.shproj", "{C63A5D9A-7457-490F-BEF5-FEBBC197BD0E}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
