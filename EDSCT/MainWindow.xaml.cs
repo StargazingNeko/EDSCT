@@ -218,11 +218,16 @@ namespace EDSCT {
             }
             catch (NullReferenceException)
             {
+                try {
+                    this.Dispatcher.Invoke((Action)(() => {
+                        shipBox1.Items.Remove(Path.GetFileNameWithoutExtension(changeEvent.Name));
+                        shipBox2.Items.Remove(Path.GetFileNameWithoutExtension(changeEvent.Name));
+                    }));
+                }
+                catch (Exception ex)
+                {
 
-                this.Dispatcher.Invoke((Action)(() => {
-                    shipBox1.Items.Remove(Path.GetFileNameWithoutExtension(changeEvent.Name));
-                    shipBox2.Items.Remove(Path.GetFileNameWithoutExtension(changeEvent.Name));
-                }));
+                }
 
                 if (!File.Exists(DataFolder + "Sidewinder.json"))
                 {
