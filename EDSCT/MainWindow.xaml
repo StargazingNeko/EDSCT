@@ -22,6 +22,5 @@
         <ComboBox x:Name="shipBox1" Margin="0,75,500,0" Height="18" Width="200" VerticalAlignment="Top" HorizontalAlignment="Center" ToolTip="Select first ship for comparison" FontFamily="Micra" FontWeight="Bold" SelectionChanged="shipBox1_SelectionChanged" Grid.Column="1" Grid.Row="1"/>
         <ComboBox x:Name="shipBox2" Margin="500,75,0,0" Height="18" Width="200" VerticalAlignment="Top" HorizontalAlignment="Center" ToolTip="Select second ship for comparison" FontFamily="Micra" FontWeight="Bold" SelectionChanged="shipBox2_SelectionChanged" Grid.Column="1" Grid.Row="2"/>
         <TextBox x:Name="testBox" Margin="0,500,0,0" HorizontalAlignment="Center" Height="25" Width="250" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontWeight="Bold" Visibility="Hidden" Grid.Column="1" Grid.Row="1"/>
-        
     </Grid>
 </Window>

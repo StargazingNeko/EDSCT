@@ -55,7 +55,6 @@ namespace EDSCT {
                 }
                 logger("- Reading files");
                 addBoxItems();
-
             }
 
         }
@@ -155,7 +154,6 @@ namespace EDSCT {
             try
             {
                 JObject JShip = JObject.Parse(File.ReadAllText(DataFolder + shipBox1.SelectedItem.ToString() + ".json"));
-                string item = (sender as System.Windows.Controls.ComboBox).SelectedItem as string;
                 logger(" - Ship 1: " + (string)JShip["ShipName"]);
                 Console.WriteLine("Ship 1: " + (string)JShip["ShipName"]);
 
@@ -177,7 +175,6 @@ namespace EDSCT {
             try
             {
                 JObject JShip = JObject.Parse(File.ReadAllText(DataFolder + shipBox2.SelectedItem.ToString() + ".json"));
-                string item = (sender as System.Windows.Controls.ComboBox).SelectedItem as string;
                 logger("Ship 2: " + (string)JShip["ShipName"], true);
                 Console.WriteLine("Ship 2: " + (string)JShip["ShipName"]);
 

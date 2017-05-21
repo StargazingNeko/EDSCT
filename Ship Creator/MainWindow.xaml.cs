@@ -66,7 +66,12 @@ namespace EDSCT {
 
         public CreateYourOwn() {
             InitializeComponent();
+
+            fighter_bay.Items.Add(true);
+            fighter_bay.Items.Add(false);
+            fighter_bay.SelectedItem = false;
         }
+
 
        #region On change events.
 
@@ -154,10 +159,6 @@ namespace EDSCT {
             seats_ = seats.Text;
         }
 
-        private void fighter_bay_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
-            fighterBay = fighter_bay.Text;
-        }
-
         private void fighter_count_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
             fighterCount = fighter_count.Text;
         }
@@ -234,6 +235,11 @@ namespace EDSCT {
         private void Military_slot2_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             military_slot2 = Military_slot2.Text;
+        }
+
+        private void fighter_bay_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            fighterBay = fighter_bay.SelectedItem.ToString();
         }
 
         #endregion
