@@ -24,8 +24,9 @@ Elite Dangerous Ship Comparison Tool
 * **NONE :)**
 
 ## TODO:
-1. Redesign UI to use tables.
-2. Find more to do.
+1. Add the last of the ships.
+2. Add color comparison.
+3. Find more to do.
 
 ## Images: (Subject to change)
 
