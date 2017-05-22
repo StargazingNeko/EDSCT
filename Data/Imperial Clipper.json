@@ -40,5 +40,7 @@
   "Size6": 1,
   "Size7": 1,
   "Size8": 0,
-  "Military": 0
+  "Military_Slot1": 0,
+  "Military_Slot2": 0,
+  "Military_Slot3": 0
 }

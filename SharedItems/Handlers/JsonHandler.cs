@@ -5,7 +5,8 @@ using Newtonsoft.Json;
 namespace EDSCT {
 
 
-    public partial class JsonHandler {
+    public partial class JsonHandler
+    {
         static string AppFolder = AppDomain.CurrentDomain.BaseDirectory;
         public static string DataFolder = AppFolder + "Data\\";
 
@@ -14,7 +15,9 @@ namespace EDSCT {
         public class ship {
 
             #region For Gridview 
+            [JsonIgnore]
             public string A { get; set; }
+            [JsonIgnore]
             public string B { get; set; }
             #endregion
 
@@ -64,6 +67,7 @@ namespace EDSCT {
             public int Size8 { get; set; }
             public int Military_Slot1 { get; set; }
             public int Military_Slot2 { get; set; }
+            public int Military_Slot3 { get; set; }
             #endregion
         }
 
@@ -110,6 +114,7 @@ namespace EDSCT {
             Sidewinder.Size8 = 0;
             Sidewinder.Military_Slot1 = 0;
             Sidewinder.Military_Slot2 = 0;
+            Sidewinder.Military_Slot3 = 0;
 
             string json = JsonConvert.SerializeObject(Sidewinder, Formatting.Indented);
             File.WriteAllText(DataFolder + "Sidewinder.json", json);

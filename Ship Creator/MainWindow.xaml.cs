@@ -61,6 +61,7 @@ namespace EDSCT {
         static string size8_ = "";
         static string military_slot1 = "";
         static string military_slot2 = "";
+        static string military_slot3 = "";
 
         //Dimensions hotfix
         static string L = "";
@@ -239,6 +240,11 @@ namespace EDSCT {
             military_slot2 = Military_slot2.Text;
         }
 
+        private void Military_slot3_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            military_slot3 = Military_slot3.Text;
+        }
+
         private void fighter_bay_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
             fighterBay = fighter_bay.SelectedItem.ToString();
         }
@@ -304,7 +310,7 @@ namespace EDSCT {
             var textBoxes = new TextBox[] { name, Manufacturer1, Landing_Pad_Size, type, ship_cost, insurance, top_speed, max_speed, boost_speed, max_boost_speed,
                                             manoeuvrability, shields, armor, hull_mass, cargo_capacity, max_cargo, fuel_capacity, uladenjump, max_jump, mass_lock_factor,
                                             seats, fighter_count, utility, small, medium, huge, size1, size2, size3, size4, size5, size6, size7, size8, Military_slot1,
-                                            Military_slot2, DimensionsLength, DimensionsWidth, DimensionsHeight };
+                                            Military_slot2, Military_slot3, DimensionsLength, DimensionsWidth, DimensionsHeight };
 
             if (textBoxes.Any(tb => tb.Text == String.Empty)) {
                 MessageBoxResult result = MessageBox.Show(this, "Please fill out all fields!", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -377,11 +383,11 @@ namespace EDSCT {
                 size8.Text = (string)JShip["Size8"];
                 Military_slot1.Text = (string)JShip["Military_Slot1"];
                 Military_slot2.Text = (string)JShip["Military_Slot2"];
+                Military_slot3.Text = (string)JShip["Military_Slot3"];
 
                 #endregion
 
             }
         }
-
     }
 }

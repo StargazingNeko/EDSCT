@@ -1,5 +1,5 @@
 {
-  "ShipName": "Eagle mkII",
+  "ShipName": "Eagle MkII",
   "Manufacturer": "Core dynamics",
   "Dimensions": [
     14.9,
@@ -38,5 +38,9 @@
   "Size4": 0,
   "Size5": 0,
   "Size6": 0,
-  "Military": 1
+  "Size7": 0,
+  "Size8": 0,
+  "Military_Slot1": 2,
+  "Military_Slot2": 0,
+  "Military_Slot3": 0
 }
