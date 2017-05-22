@@ -25,7 +25,7 @@ Elite Dangerous Ship Comparison Tool
 
 ## TODO:
 1. Add the last of the ships.
-2. Add color comparison.
+2. ~~Add color comparison.~~ Might not be possible.
 3. Find more to do.
 
 ## Images: (Subject to change)
