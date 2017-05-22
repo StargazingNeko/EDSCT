@@ -3,12 +3,15 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>c63a5d9a-7457-490f-bef5-febbc197bd0e</SharedGUID>
+    <SharedGUID>3cae5b54-b2a3-4464-813a-60b5ee07dbd0</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Resources</Import_RootNamespace>
+    <Import_RootNamespace>SharedItems</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Resources\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Handlers\JsonHandler.cs" />
   </ItemGroup>
 </Project>

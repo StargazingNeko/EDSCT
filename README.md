@@ -8,17 +8,28 @@ Elite Dangerous Ship Comparison Tool
 
 
 ## How to add new ships to the list
-1. Copy the Sidewinder.json file and rename it to whatever the new ship is.
-2. Open the file and replace the details with the new ships details.
-* e.g. change "ShipName":"Sidewinder" to "ShipName":"\<Name>".
-3. If EDSCT is already running relaunch it and the list will be updated.
+1. Launch the Ship Creator.
+2. Fill out all the details.
+3. Click "Save".
+* NOTE: If you have the Ship Creator outside of EDSCT's folder you will need to copy or move the data folder from the Ship Creator folder to the EDSCT folder, otherwise if you have them in the same folder they will share the same data folder.
 
-* Note: EDSCT gets the list by calling "ShipName" from the json files, so whatever you put this as will tell the tool what to list the ship as!
+## How to update outdated/incorrect ships
+1. Launch the Ship Creator.
+2. Click "Load".
+3. Fill in missing/correct details.
+4. Click "Save".
 
 ## Known bugs / Technical Difficulties
 
-1. Ship Creator will crash the program if you don't enter in all the fields
-2. Dropdown list of ships doesn't update after clicking create button
-3. Default values are as of now a hard to read blue (This will be changed)
-4. Dimensions of ship now sort of display. First set of dimensions shows correctly but others don't.
+* **NONE :)**
 
+## TODO:
+1. Redesign UI to use tables.
+2. Find more to do.
+
+## Images: (Subject to change)
+
+![Picture of Ship Comparer without values](http://i.imgur.com/ovSnVdM.png)
+![Picture of Ship Comparer with values](http://i.imgur.com/pav4F2S.png)
+![Picture of Ship Creator without values](http://i.imgur.com/OGmXfXR.png)
+![Picture of Ship Creator without values](http://i.imgur.com/MfcKkcA.png)

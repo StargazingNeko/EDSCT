@@ -63,11 +63,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="..\SharedItems\Handlers\JsonHandler.cs">
+      <Link>JsonHandler.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="JsonHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -101,11 +103,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="..\Resources\Resources\background.png">
+    <Resource Include="..\SharedItems\Resources\background.png">
       <Link>background.png</Link>
     </Resource>
   </ItemGroup>

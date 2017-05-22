@@ -2,8 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 
-namespace EDSCT
-{
+namespace EDSCT {
 
 
     public partial class JsonHandler
@@ -13,9 +12,16 @@ namespace EDSCT
 
 
 
-        public class ship
-        {
-            //Core ship info
+        public class ship {
+
+            #region For Gridview 
+            [JsonIgnore]
+            public string A { get; set; }
+            [JsonIgnore]
+            public string B { get; set; }
+            #endregion
+
+            #region Core ship info
             public string ShipName { get; set; }
             public string Manufacturer { get; set; }
             public double[] Dimensions { get; set; }
@@ -40,15 +46,17 @@ namespace EDSCT
             public int Seats { get; set; }
             public bool FighterBay { get; set; }
             public int FighterCount { get; set; }
+            #endregion
 
-            //Hardpoints
+            #region Hardpoints
             public int Utility { get; set; }
             public int Small { get; set; }
             public int Medium { get; set; }
             public int Large { get; set; }
             public int Huge { get; set; }
+            #endregion
 
-            //Internal Sizes
+            #region Internal Sizes
             public int Size1 { get; set; }
             public int Size2 { get; set; }
             public int Size3 { get; set; }
@@ -59,12 +67,11 @@ namespace EDSCT
             public int Size8 { get; set; }
             public int Military_Slot1 { get; set; }
             public int Military_Slot2 { get; set; }
+            public int Military_Slot3 { get; set; }
+            #endregion
         }
 
-
-
-        public static void createExampleJson()
-        {
+        public static void createExampleJson() {
 
             ship Sidewinder = new ship();
 
@@ -107,11 +114,12 @@ namespace EDSCT
             Sidewinder.Size8 = 0;
             Sidewinder.Military_Slot1 = 0;
             Sidewinder.Military_Slot2 = 0;
+            Sidewinder.Military_Slot3 = 0;
 
             string json = JsonConvert.SerializeObject(Sidewinder, Formatting.Indented);
             File.WriteAllText(DataFolder + "Sidewinder.json", json);
-            
+
         }
- 
+
     }
 }

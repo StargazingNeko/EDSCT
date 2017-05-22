@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDSCT"
         mc:Ignorable="d"
-        Title="EDSCT - Create Your Own Ship JSON" Height="529.138" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
+        Title="EDSCT - Create Your Own Ship JSON" Height="529.138" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow" Visibility="Visible" SnapsToDevicePixels="True">
     <Window.Background>
         <ImageBrush ImageSource="/Ship Creator;component/background.png"/>
     </Window.Background>
@@ -61,13 +61,13 @@
         <Label x:Name="MaxCargo" Content="Max Cargo:" HorizontalAlignment="Left" Margin="42,2,0,0" VerticalAlignment="Top" Width="99" Grid.Row="15" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
         <Label x:Name="Type" Content="Type: " HorizontalAlignment="Left" Margin="76,23,0,0" VerticalAlignment="Top" Width="68" Grid.Row="2" Grid.RowSpan="3" Foreground="White" FontWeight="Bold"/>
         <Label x:Name="Cost" Content="Ship Cost: " HorizontalAlignment="Left" Margin="49,0,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.544,0.682" Grid.Row="4" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
-        <Label x:Name="Name___Copy26" Content="Max Speed: " HorizontalAlignment="Left" Margin="41,2,0,0" VerticalAlignment="Top" Width="77" Grid.Row="7" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
-        <Label x:Name="Name___Copy27" Content="Top Speed:" HorizontalAlignment="Left" Margin="44,1,0,0" VerticalAlignment="Top" Width="76" Grid.Row="6" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
-        <Label x:Name="Name___Copy28" Content="Max Boost Speed: " HorizontalAlignment="Left" Margin="6,22,0,0" VerticalAlignment="Top" Width="115" Grid.Row="8" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
-        <Label x:Name="Name___Copy29" Content="Boost Speed: " HorizontalAlignment="Left" Margin="33,22,0,0" VerticalAlignment="Top" Width="99" Grid.Row="7" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
+        <Label x:Name="MaxSpeed__" Content="Max Speed: " HorizontalAlignment="Left" Margin="41,2,0,0" VerticalAlignment="Top" Width="77" Grid.Row="7" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
+        <Label x:Name="TopSpeed__" Content="Top Speed:" HorizontalAlignment="Left" Margin="44,1,0,0" VerticalAlignment="Top" Width="76" Grid.Row="6" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
+        <Label x:Name="MaxBoostSpeed__" Content="Max Boost Speed: " HorizontalAlignment="Left" Margin="6,22,0,0" VerticalAlignment="Top" Width="115" Grid.Row="8" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
+        <Label x:Name="BoostSpeed__" Content="Boost Speed: " HorizontalAlignment="Left" Margin="33,22,0,0" VerticalAlignment="Top" Width="99" Grid.Row="7" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
         <Label x:Name="Manoeuvrability" Content="Manoeuvrability: " HorizontalAlignment="Left" Margin="11,21,0,0" VerticalAlignment="Top" Width="115" Grid.Row="9" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
-        <Label x:Name="Name___Copy31" Content="Insurance: " HorizontalAlignment="Left" Margin="49,0,0,0" VerticalAlignment="Top" Width="68" Grid.Row="5" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
-        <Label x:Name="Name___Copy32" Content="Shields: " HorizontalAlignment="Left" Margin="64,21,0,0" VerticalAlignment="Top" Width="68" Grid.Row="10" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
+        <Label x:Name="Insurance__" Content="Insurance: " HorizontalAlignment="Left" Margin="49,0,0,0" VerticalAlignment="Top" Width="68" Grid.Row="5" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
+        <Label x:Name="shields__" Content="Shields: " HorizontalAlignment="Left" Margin="64,21,0,0" VerticalAlignment="Top" Width="68" Grid.Row="10" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
         <Label x:Name="HullMass" Content="Hull Mass: " HorizontalAlignment="Left" Margin="48,19,0,0" VerticalAlignment="Top" Width="68" Grid.Row="12" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
         <Label x:Name="Armor" Content="Armor: " HorizontalAlignment="Left" Margin="66,19,0,0" VerticalAlignment="Top" Width="68" Grid.Row="11" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
         <Label x:Name="CargoCapacity" Content="Cargo Capacity:" HorizontalAlignment="Left" Margin="20,2,0,0" VerticalAlignment="Top" Width="99" Grid.Row="14" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
@@ -77,9 +77,8 @@
         <Label x:Name="Dimensions_Height" Content="Height:" HorizontalAlignment="Left" Margin="44,22,0,0" VerticalAlignment="Top" Width="57" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="10" Grid.RowSpan="2"/>
         <Label x:Name="Dimensions_Width" Content="Width: " HorizontalAlignment="Left" Margin="48,20,0,0" VerticalAlignment="Top" Width="57" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="9" Grid.RowSpan="2"/>
         <Label x:Name="Dimensions_Label" Content="Dimensions:" HorizontalAlignment="Left" Margin="17,22,0,0" VerticalAlignment="Top" Width="97" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="7" Grid.RowSpan="2"/>
-        <Label x:Name="Military_Copy" Content="Slot 1:" HorizontalAlignment="Left" Margin="49,0,0,0" VerticalAlignment="Top" Width="52" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" Height="27"/>
-        <Label x:Name="Military_Copy1" Content="Slot 2:" HorizontalAlignment="Left" Margin="49,0,0,21" VerticalAlignment="Bottom" Width="52" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="5" Grid.RowSpan="2" Height="27"/>
-
+        <Label x:Name="Military_Slot1" Content="Slot 1:" HorizontalAlignment="Left" Margin="49,0,0,0" VerticalAlignment="Top" Width="52" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" Height="27"/>
+        <Label x:Name="Military_Slot2" Content="Slot 2:" HorizontalAlignment="Left" Margin="49,0,0,21" VerticalAlignment="Bottom" Width="52" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="5" Grid.RowSpan="2" Height="27"/>
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="25" Margin="114,-1,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TextChanged="name_TextChanged"/>
         <TextBox x:Name="Manufacturer1" HorizontalAlignment="Left" Height="25" Margin="114,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TextChanged="Manufacturer1_TextChanged" Grid.RowSpan="2"/>
         <TextBox x:Name="Landing_Pad_Size" HorizontalAlignment="Left" Height="25" Margin="114,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TextChanged="TextBox_TextChanged_1" Grid.Row="1" Grid.RowSpan="2"/>
@@ -101,7 +100,6 @@
         <TextBox x:Name="max_jump" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="max_jump_TextChanged" Grid.Row="1" Margin="94,0,0,0" Grid.Column="1"/>
         <TextBox x:Name="mass_lock_factor" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="MassLockFactor_TextChanged" Grid.Row="2" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
         <TextBox x:Name="seats" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="seats_TextChanged" Grid.Row="3" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
-        <TextBox x:Name="fighter_bay" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="fighter_bay_TextChanged" Grid.Row="4" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
         <TextBox x:Name="fighter_count" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="fighter_count_TextChanged" Grid.Row="5" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
         <TextBox x:Name="utility" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="utility_TextChanged" Grid.Row="6" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
         <TextBox x:Name="small" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="small_TextChanged" Grid.Row="7" Grid.RowSpan="2" Margin="94,0,0,0" Grid.Column="1"/>
@@ -121,9 +119,10 @@
         <TextBox x:Name="DimensionsLength" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TextChanged="DimensionsLength_TextChanged" Margin="94,22,0,0" Grid.Column="2" Grid.Row="8" Grid.RowSpan="2"/>
         <TextBox x:Name="DimensionsHeight" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Margin="94,23,0,0" Grid.Column="2" Grid.Row="10" Grid.RowSpan="2" TextChanged="DimensionsHeight_TextChanged"/>
         <TextBox x:Name="DimensionsWidth" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Margin="94,22,0,0" Grid.Column="2" Grid.Row="9" Grid.RowSpan="2" TextChanged="DimensionsWidth_TextChanged"/>
-
-        <Button Content="Save and Create JSON file" HorizontalAlignment="Left" VerticalAlignment="Top" Width="297" Height="67" Click="Button_Click" Grid.Row="17" Grid.Column="1" Margin="0,23,0,0" Grid.RowSpan="2"/>
-        <Button x:Name="LoadFile" Content="Load JSON File" HorizontalAlignment="Left" VerticalAlignment="Top" Width="297" Height="67" Grid.Row="18" Grid.Column="2" Margin="0,0,0,-1" Click="LoadFile_Click"/>
-
+        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="297" Height="67" Click="Button_Click" Grid.Row="17" Grid.Column="1" Margin="0,23,0,0" Grid.RowSpan="2"/>
+        <Button x:Name="LoadFile" Content="Load" HorizontalAlignment="Left" VerticalAlignment="Top" Width="297" Height="67" Grid.Row="18" Grid.Column="2" Margin="0,0,0,-1" Click="LoadFile_Click"/>
+        <ComboBox Margin="94,0,0,23" x:Name="fighter_bay" Grid.Row="4" Grid.Column="1"  HorizontalAlignment="Left" Width="203" Grid.RowSpan="2" SelectionChanged="fighter_bay_SelectionChanged"/>
+        <TextBox x:Name="Military_slot3" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Margin="94,0,0,0" Grid.Column="2" Grid.Row="6" Grid.RowSpan="2" TextChanged="Military_slot3_TextChanged"/>
+        <Label x:Name="Military_Slot3" Content="Slot 3:" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Bottom" Width="52" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="5" Grid.RowSpan="2" Height="27"/>
     </Grid>
 </Window>
