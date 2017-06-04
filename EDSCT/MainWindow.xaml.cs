@@ -145,7 +145,7 @@ namespace EDSCT {
                 JArray sizes = (JArray)JShip["Dimensions"];
                 string dimensions = (string)sizes[0] + "L - " + (string)sizes[1] + "W - " + (string)sizes[2] + "H";
 
-                #region Add to DataGrid
+                #region Add to DataGrid 1
                 var list = new ObservableCollection<ship>();
                 list.Add(new ship() { A = "Ship Name", B = (string)JShip["ShipName"] });
                 list.Add(new ship() { A = "Manufacturer", B = (string)JShip["Manufacturer"] });
@@ -163,7 +163,7 @@ namespace EDSCT {
                 list.Add(new ship() { A = "Armor", B = (string)JShip["Armor"] });
                 list.Add(new ship() { A = "Hull Mass", B = string.Format("{0} t", JShip["HullMass"]) });
                 list.Add(new ship() { A = "Cargo Capacity", B = string.Format("{0} t", JShip["CargoCapacity"]) });
-                list.Add(new ship() { A = "Max Cargo", B = string.Format("{0} t", JShip["MaxCargo"]) });
+                list.Add(new ship() { A = "Max Cargo Capacity", B = string.Format("{0} t", JShip["MaxCargo"]) });
                 list.Add(new ship() { A = "Fuel Capacity", B = string.Format("{0} t", JShip["FuelCapacity"]) });
                 list.Add(new ship() { A = "Unladen Jump", B = string.Format("{0} ly", JShip["UnladenJump"]) });
                 list.Add(new ship() { A = "Max Jump", B = string.Format("{0} ly", JShip["MaxJump"]) });
@@ -172,12 +172,11 @@ namespace EDSCT {
                 if ((bool)JShip["FighterBay"])
                 {
                     list.Add(new ship() { A = "FighterBay", B = "Yes" });
-                    list.Add(new ship() { A = "FighterCount", B = (string)JShip["FighterCount"] });
+                    list.Add(new ship() { A = "MaxFighterBayTier", B = (string)JShip["MaxFighterBayTier"] });
                 }
                 else
                 {
                     list.Add(new ship() { A = "FighterBay", B = "No" });
-                    list.Add(new ship() { A = "FighterCount", B = "None" });
                 }
                 list.Add(new ship() { A = "Utility", B = (string)JShip["Utility"] });
                 list.Add(new ship() { A = "Small", B = (string)JShip["Small"] });
@@ -214,7 +213,7 @@ namespace EDSCT {
                 JArray sizes = (JArray)JShip["Dimensions"];
                 string dimensions = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
 
-                #region Add to DataGrid
+                #region Add to DataGrid 2
                 var list = new ObservableCollection<ship>();
                 list.Add(new ship() { A = "Ship Name", B = (string)JShip["ShipName"] });
                 list.Add(new ship() { A = "Manufacturer", B = (string)JShip["Manufacturer"] });
@@ -232,7 +231,7 @@ namespace EDSCT {
                 list.Add(new ship() { A = "Armor", B = (string)JShip["Armor"] });
                 list.Add(new ship() { A = "Hull Mass", B = string.Format("{0} t", JShip["HullMass"]) });
                 list.Add(new ship() { A = "Cargo Capacity", B = string.Format("{0} t", JShip["CargoCapacity"]) });
-                list.Add(new ship() { A = "Max Cargo", B = string.Format("{0} t", JShip["MaxCargo"]) });
+                list.Add(new ship() { A = "Max Cargo Capacity", B = string.Format("{0} t", JShip["MaxCargo"]) });
                 list.Add(new ship() { A = "Fuel Capacity", B = string.Format("{0} t", JShip["FuelCapacity"]) });
                 list.Add(new ship() { A = "Unladen Jump", B = string.Format("{0} ly", JShip["UnladenJump"]) });
                 list.Add(new ship() { A = "Max Jump", B = string.Format("{0} ly", JShip["MaxJump"]) });
@@ -246,7 +245,6 @@ namespace EDSCT {
                 else
                 {
                     list.Add(new ship() { A = "FighterBay", B = "No" });
-                    list.Add(new ship() { A = "FighterCount", B = "None" });
                 }
                 list.Add(new ship() { A = "Utility", B = (string)JShip["Utility"] });
                 list.Add(new ship() { A = "Small", B = (string)JShip["Small"] });

@@ -25,8 +25,8 @@
   "MaxJump": 19.4,
   "MassLockFactor": 14,
   "Seats": 2,
-  "FighterBay": false,
-  "FighterCount": 0,
+  "FighterBay": true,
+  "MaxFighterBayTier": 6,
   "Utility": 4,
   "Small": 2,
   "Medium": 4,
@@ -42,5 +42,5 @@
   "Size8": 0,
   "Military_Slot1": 4,
   "Military_Slot2": 4,
-  "Military_Slot3": 4
+  "Military_Slot3": 0
 }
