@@ -45,7 +45,7 @@ namespace EDSCT {
             public int MassLockFactor { get; set; }
             public int Seats { get; set; }
             public bool FighterBay { get; set; }
-            public int FighterCount { get; set; }
+            public int MaxFighterBayTier { get; set; }
             #endregion
 
             #region Hardpoints
@@ -92,7 +92,7 @@ namespace EDSCT {
             Sidewinder.HullMass = 25;
             Sidewinder.Seats = 1;
             Sidewinder.FighterBay = false;
-            Sidewinder.FighterCount = 0;
+            Sidewinder.MaxFighterBayTier = 0;
             Sidewinder.CargoCapacity = 4;
             Sidewinder.MaxCargo = 12;
             Sidewinder.FuelCapacity = 2;

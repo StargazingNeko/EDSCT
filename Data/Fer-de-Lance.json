@@ -26,7 +26,7 @@
   "MassLockFactor": 12,
   "Seats": 2,
   "FighterBay": false,
-  "FighterCount": 0,
+  "MaxFighterBayTier": 0,
   "Utility": 6,
   "Small": 0,
   "Medium": 4,

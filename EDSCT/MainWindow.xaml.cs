@@ -143,34 +143,41 @@ namespace EDSCT {
                 Console.WriteLine("Ship 1: " + (string)JShip["ShipName"]);
 
                 JArray sizes = (JArray)JShip["Dimensions"];
-                string dimensions = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
+                string dimensions = (string)sizes[0] + "L - " + (string)sizes[1] + "W - " + (string)sizes[2] + "H";
 
-                #region Add to DataGrid
+                #region Add to DataGrid 1
                 var list = new ObservableCollection<ship>();
                 list.Add(new ship() { A = "Ship Name", B = (string)JShip["ShipName"] });
                 list.Add(new ship() { A = "Manufacturer", B = (string)JShip["Manufacturer"] });
                 list.Add(new ship() { A = "Dimensions", B = dimensions });
                 list.Add(new ship() { A = "Landing Pad Size", B = (string)JShip["LandingPadSize"] });
                 list.Add(new ship() { A = "Type", B = (string)JShip["Type"] });
-                list.Add(new ship() { A = "Cost", B = (string)JShip["Cost"] });
-                list.Add(new ship() { A = "Insurance", B = (string)JShip["Insurance"] });
-                list.Add(new ship() { A = "Top Speed", B = (string)JShip["TopSpeed"] });
-                list.Add(new ship() { A = "Max Speed", B = (string)JShip["MaxSpeed"] });
-                list.Add(new ship() { A = "Boost Speed", B = (string)JShip["BoostSpeed"] });
-                list.Add(new ship() { A = "Max Boost Speed", B = (string)JShip["MaxBoostSpeed"] });
+                list.Add(new ship() { A = "Cost", B = string.Format("{0:n0} CR", JShip["Cost"]) });
+                list.Add(new ship() { A = "Insurance", B = string.Format("{0:n0} CR", JShip["Insurance"]) });
+                list.Add(new ship() { A = "Top Speed", B = string.Format("{0} m/s", JShip["TopSpeed"]) });
+                list.Add(new ship() { A = "Max Speed", B = string.Format("{0} m/s", JShip["MaxSpeed"]) });
+                list.Add(new ship() { A = "Boost Speed", B = string.Format("{0} m/s", JShip["BoostSpeed"]) });
+                list.Add(new ship() { A = "Max Boost Speed", B = string.Format("{0} m/s", JShip["MaxBoostSpeed"]) });
                 list.Add(new ship() { A = "Manoeuvrability", B = (string)JShip["Manoeuvrability"] });
-                list.Add(new ship() { A = "Shields", B = (string)JShip["Shields"] });
+                list.Add(new ship() { A = "Shields", B = string.Format("{0} MJ", JShip["Shields"]) });
                 list.Add(new ship() { A = "Armor", B = (string)JShip["Armor"] });
-                list.Add(new ship() { A = "Hull Mass", B = (string)JShip["HullMass"] });
-                list.Add(new ship() { A = "Cargo Capacity", B = (string)JShip["CargoCapacity"] });
-                list.Add(new ship() { A = "Max Cargo", B = (string)JShip["MaxCargo"] });
-                list.Add(new ship() { A = "Fuel Capacity", B = (string)JShip["FuelCapacity"] });
-                list.Add(new ship() { A = "Unladen Jump", B = (string)JShip["UnladenJump"] });
-                list.Add(new ship() { A = "Max Jump", B = (string)JShip["MaxJump"] });
+                list.Add(new ship() { A = "Hull Mass", B = string.Format("{0} t", JShip["HullMass"]) });
+                list.Add(new ship() { A = "Cargo Capacity", B = string.Format("{0} t", JShip["CargoCapacity"]) });
+                list.Add(new ship() { A = "Max Cargo Capacity", B = string.Format("{0} t", JShip["MaxCargo"]) });
+                list.Add(new ship() { A = "Fuel Capacity", B = string.Format("{0} t", JShip["FuelCapacity"]) });
+                list.Add(new ship() { A = "Unladen Jump", B = string.Format("{0} ly", JShip["UnladenJump"]) });
+                list.Add(new ship() { A = "Max Jump", B = string.Format("{0} ly", JShip["MaxJump"]) });
                 list.Add(new ship() { A = "Mass Lock Factor", B = (string)JShip["MassLockFactor"] });
                 list.Add(new ship() { A = "Seats", B = (string)JShip["Seats"] });
-                list.Add(new ship() { A = "FighterBay", B = (string)JShip["FighterBay"] });
-                list.Add(new ship() { A = "FighterCount", B = (string)JShip["FighterCount"] });
+                if ((bool)JShip["FighterBay"])
+                {
+                    list.Add(new ship() { A = "FighterBay", B = "Yes" });
+                    list.Add(new ship() { A = "MaxFighterBayTier", B = (string)JShip["MaxFighterBayTier"] });
+                }
+                else
+                {
+                    list.Add(new ship() { A = "FighterBay", B = "No" });
+                }
                 list.Add(new ship() { A = "Utility", B = (string)JShip["Utility"] });
                 list.Add(new ship() { A = "Small", B = (string)JShip["Small"] });
                 list.Add(new ship() { A = "Medium", B = (string)JShip["Medium"] });
@@ -206,48 +213,55 @@ namespace EDSCT {
                 JArray sizes = (JArray)JShip["Dimensions"];
                 string dimensions = (string)sizes[0] + "L, " + (string)sizes[1] + "W, " + (string)sizes[2] + "H";
 
-                #region Add to DataGrid
+                #region Add to DataGrid 2
                 var list = new ObservableCollection<ship>();
-                list.Add(new ship() { A = "Ship Name", B = (string)JShip["ShipName"]});
-                list.Add(new ship() { A = "Manufacturer", B = (string)JShip["Manufacturer"]});
+                list.Add(new ship() { A = "Ship Name", B = (string)JShip["ShipName"] });
+                list.Add(new ship() { A = "Manufacturer", B = (string)JShip["Manufacturer"] });
                 list.Add(new ship() { A = "Dimensions", B = dimensions });
-                list.Add(new ship() { A = "Landing Pad Size", B = (string)JShip["LandingPadSize"]});
-                list.Add(new ship() { A = "Type", B = (string)JShip["Type"]});
-                list.Add(new ship() { A = "Cost", B = (string)JShip["Cost"]});
-                list.Add(new ship() { A = "Insurance", B = (string)JShip["Insurance"]});
-                list.Add(new ship() { A = "Top Speed", B = (string)JShip["TopSpeed"]});
-                list.Add(new ship() { A = "Max Speed", B = (string)JShip["MaxSpeed"]});
-                list.Add(new ship() { A = "Boost Speed", B = (string)JShip["BoostSpeed"]});
-                list.Add(new ship() { A = "Max Boost Speed", B = (string)JShip["MaxBoostSpeed"]});
-                list.Add(new ship() { A = "Manoeuvrability", B = (string)JShip["Manoeuvrability"]});
-                list.Add(new ship() { A = "Shields", B = (string)JShip["Shields"]});
-                list.Add(new ship() { A = "Armor", B = (string)JShip["Armor"]});
-                list.Add(new ship() { A = "Hull Mass", B = (string)JShip["HullMass"]});
-                list.Add(new ship() { A = "Cargo Capacity", B = (string)JShip["CargoCapacity"]});
-                list.Add(new ship() { A = "Max Cargo", B = (string)JShip["MaxCargo"] });
-                list.Add(new ship() { A = "Fuel Capacity", B = (string)JShip["FuelCapacity"]});
-                list.Add(new ship() { A = "Unladen Jump", B = (string)JShip["UnladenJump"]});
-                list.Add(new ship() { A = "Max Jump", B = (string)JShip["MaxJump"]});
-                list.Add(new ship() { A = "Mass Lock Factor", B = (string)JShip["MassLockFactor"]});
-                list.Add(new ship() { A = "Seats", B = (string)JShip["Seats"]});
-                list.Add(new ship() { A = "FighterBay", B = (string)JShip["FighterBay"]});
-                list.Add(new ship() { A = "FighterCount", B = (string)JShip["FighterCount"]});
-                list.Add(new ship() { A = "Utility", B = (string)JShip["Utility"]});
-                list.Add(new ship() { A = "Small", B = (string)JShip["Small"]});
-                list.Add(new ship() { A = "Medium", B = (string)JShip["Medium"]});
-                list.Add(new ship() { A = "Large", B = (string)JShip["Large"]});
-                list.Add(new ship() { A = "Huge", B = (string)JShip["Huge"]});
-                list.Add(new ship() { A = "Size 1", B = (string)JShip["Size1"]});
-                list.Add(new ship() { A = "Size 2", B = (string)JShip["Size2"]});
-                list.Add(new ship() { A = "Size 3", B = (string)JShip["Size3"]});
-                list.Add(new ship() { A = "Size 4", B = (string)JShip["Size4"]});
-                list.Add(new ship() { A = "Size 5", B = (string)JShip["Size5"]});
-                list.Add(new ship() { A = "Size 6", B = (string)JShip["Size6"]});
-                list.Add(new ship() { A = "Size 7", B = (string)JShip["Size7"]});
-                list.Add(new ship() { A = "Size 8", B = (string)JShip["Size8"]});
-                list.Add(new ship() { A = "Military Slot 1", B = (string)JShip["Military_Slot1"]});
-                list.Add(new ship() { A = "Military Slot 2", B = (string)JShip["Military_Slot2"]});
-                list.Add(new ship() { A = "Military Slot 3", B = (string)JShip["Military_Slot3"]});
+                list.Add(new ship() { A = "Landing Pad Size", B = (string)JShip["LandingPadSize"] });
+                list.Add(new ship() { A = "Type", B = (string)JShip["Type"] });
+                list.Add(new ship() { A = "Cost", B = string.Format("{0:n0} CR", JShip["Cost"]) });
+                list.Add(new ship() { A = "Insurance", B = string.Format("{0:n0} CR", JShip["Insurance"]) });
+                list.Add(new ship() { A = "Top Speed", B = string.Format("{0} m/s", JShip["TopSpeed"]) });
+                list.Add(new ship() { A = "Max Speed", B = string.Format("{0} m/s", JShip["MaxSpeed"]) });
+                list.Add(new ship() { A = "Boost Speed", B = string.Format("{0} m/s", JShip["BoostSpeed"]) });
+                list.Add(new ship() { A = "Max Boost Speed", B = string.Format("{0} m/s", JShip["MaxBoostSpeed"]) });
+                list.Add(new ship() { A = "Manoeuvrability", B = (string)JShip["Manoeuvrability"] });
+                list.Add(new ship() { A = "Shields", B = string.Format("{0} MJ", JShip["Shields"]) });
+                list.Add(new ship() { A = "Armor", B = (string)JShip["Armor"] });
+                list.Add(new ship() { A = "Hull Mass", B = string.Format("{0} t", JShip["HullMass"]) });
+                list.Add(new ship() { A = "Cargo Capacity", B = string.Format("{0} t", JShip["CargoCapacity"]) });
+                list.Add(new ship() { A = "Max Cargo Capacity", B = string.Format("{0} t", JShip["MaxCargo"]) });
+                list.Add(new ship() { A = "Fuel Capacity", B = string.Format("{0} t", JShip["FuelCapacity"]) });
+                list.Add(new ship() { A = "Unladen Jump", B = string.Format("{0} ly", JShip["UnladenJump"]) });
+                list.Add(new ship() { A = "Max Jump", B = string.Format("{0} ly", JShip["MaxJump"]) });
+                list.Add(new ship() { A = "Mass Lock Factor", B = (string)JShip["MassLockFactor"] });
+                list.Add(new ship() { A = "Seats", B = (string)JShip["Seats"] });
+                if ((bool)JShip["FighterBay"])
+                {
+                    list.Add(new ship() { A = "FighterBay", B = "Yes" });
+                    list.Add(new ship() { A = "FighterCount", B = (string)JShip["FighterCount"] });
+                }
+                else
+                {
+                    list.Add(new ship() { A = "FighterBay", B = "No" });
+                }
+                list.Add(new ship() { A = "Utility", B = (string)JShip["Utility"] });
+                list.Add(new ship() { A = "Small", B = (string)JShip["Small"] });
+                list.Add(new ship() { A = "Medium", B = (string)JShip["Medium"] });
+                list.Add(new ship() { A = "Large", B = (string)JShip["Large"] });
+                list.Add(new ship() { A = "Huge", B = (string)JShip["Huge"] });
+                list.Add(new ship() { A = "Size 1", B = (string)JShip["Size1"] });
+                list.Add(new ship() { A = "Size 2", B = (string)JShip["Size2"] });
+                list.Add(new ship() { A = "Size 3", B = (string)JShip["Size3"] });
+                list.Add(new ship() { A = "Size 4", B = (string)JShip["Size4"] });
+                list.Add(new ship() { A = "Size 5", B = (string)JShip["Size5"] });
+                list.Add(new ship() { A = "Size 6", B = (string)JShip["Size6"] });
+                list.Add(new ship() { A = "Size 7", B = (string)JShip["Size7"] });
+                list.Add(new ship() { A = "Size 8", B = (string)JShip["Size8"] });
+                list.Add(new ship() { A = "Military Slot 1", B = (string)JShip["Military_Slot1"] });
+                list.Add(new ship() { A = "Military Slot 2", B = (string)JShip["Military_Slot2"] });
+                list.Add(new ship() { A = "Military Slot 3", B = (string)JShip["Military_Slot3"] });
                 this.dataGrid2.ItemsSource = list;
                 #endregion
 

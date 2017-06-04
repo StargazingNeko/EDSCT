@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDSCT"
         mc:Ignorable="d"
-        Title="EDSCT - Create Your Own Ship JSON" Height="529.138" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow" Visibility="Visible" SnapsToDevicePixels="True">
+        Title="EDSCT - Ship Creator" Height="529.138" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow" Visibility="Visible" SnapsToDevicePixels="True">
     <Window.Background>
         <ImageBrush ImageSource="/Ship Creator;component/background.png"/>
     </Window.Background>
@@ -43,7 +43,7 @@
         <Label x:Name="MaxJump" Content="MaxJump: " HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Grid.RowSpan="2" Grid.Row="1" Foreground="White" FontWeight="Bold" Margin="29,0,0,0" Grid.Column="1"/>
         <Label x:Name="MassLockFactor" Content="MassLockFactor: " HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" RenderTransformOrigin="0.464,1" Grid.Row="2" Grid.RowSpan="2" Margin="295,0,0,0" Foreground="White" FontWeight="Bold" Grid.ColumnSpan="2"/>
         <Label x:Name="Seats" Content="Seats: " HorizontalAlignment="Left" Margin="52,23,0,0" VerticalAlignment="Top" Width="43" Grid.Row="2" Grid.RowSpan="3" Foreground="White" FontWeight="Bold" Grid.Column="1"/>
-        <Label x:Name="FighterCount" Content="FighterCount: " HorizontalAlignment="Left" Margin="312,22,0,0" VerticalAlignment="Top" Width="97" RenderTransformOrigin="0.433,-0.273" Grid.Row="4" Grid.RowSpan="2" Foreground="White" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <Label x:Name="MaxFighterBayTier" Content="FighterBayTier: " HorizontalAlignment="Left" Margin="300,22,0,0" VerticalAlignment="Top" Width="97" RenderTransformOrigin="0.433,-0.273" Grid.Row="4" Grid.RowSpan="2" Foreground="White" FontWeight="Bold" Grid.ColumnSpan="2"/>
         <Label x:Name="FighterBay" Content="FighterBay: " HorizontalAlignment="Left" Margin="23,22,0,0" VerticalAlignment="Top" Width="74" Grid.Row="3" Grid.RowSpan="2" Foreground="White" FontWeight="Bold" Grid.Column="1"/>
         <Label x:Name="FuelCapacity" Content="Fuel Capacity:" HorizontalAlignment="Left" Margin="28,0,0,0" VerticalAlignment="Top" Width="101" Grid.Row="16" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
         <Label x:Name="Medium" Content="Medium: " HorizontalAlignment="Left" Margin="35,1,0,0" VerticalAlignment="Top" Width="63" Grid.Row="8" Grid.RowSpan="2" Foreground="White" FontWeight="Bold" Grid.Column="1"/>
@@ -58,7 +58,7 @@
         <Label x:Name="Military" Content="Military: " HorizontalAlignment="Left" Margin="37,0,0,0" VerticalAlignment="Top" Width="97" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="3" Grid.RowSpan="2" Height="27"/>
         <Label x:Name="Huge" Content="Huge: " HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Grid.Row="10" Grid.RowSpan="2" Foreground="White" FontWeight="Bold" Margin="51,0,0,0" Grid.Column="1"/>
         <Label x:Name="Size6" Content="Size6: " HorizontalAlignment="Left" Margin="52,23,0,0" VerticalAlignment="Top" Width="42" Grid.Row="15" Grid.RowSpan="3" Foreground="White" FontWeight="Bold" Grid.Column="1"/>
-        <Label x:Name="MaxCargo" Content="Max Cargo:" HorizontalAlignment="Left" Margin="42,2,0,0" VerticalAlignment="Top" Width="99" Grid.Row="15" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
+        <Label x:Name="MaxCargo" Content="MaxCargoCapacity:" HorizontalAlignment="Left" Margin="0,2,1,0" VerticalAlignment="Top" Width="125" Grid.Row="15" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
         <Label x:Name="Type" Content="Type: " HorizontalAlignment="Left" Margin="76,23,0,0" VerticalAlignment="Top" Width="68" Grid.Row="2" Grid.RowSpan="3" Foreground="White" FontWeight="Bold"/>
         <Label x:Name="Cost" Content="Ship Cost: " HorizontalAlignment="Left" Margin="49,0,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="1.544,0.682" Grid.Row="4" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>
         <Label x:Name="MaxSpeed__" Content="Max Speed: " HorizontalAlignment="Left" Margin="41,2,0,0" VerticalAlignment="Top" Width="77" Grid.Row="7" Grid.RowSpan="2" Foreground="White" FontWeight="Bold"/>

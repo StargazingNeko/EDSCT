@@ -39,7 +39,7 @@ namespace EDSCT {
         static string hullMass = "";
         static string seats_ = "";
         static string fighterBay = "";
-        static string fighterCount = "";
+        static string maxFighterBayTier = "";
         static string cargoCapacity = "";
         static string maxCargo = "";
         static string fuelCapacity = "";
@@ -165,7 +165,7 @@ namespace EDSCT {
         }
 
         private void fighter_count_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
-            fighterCount = fighter_count.Text;
+            maxFighterBayTier = fighter_count.Text;
         }
 
         private void utility_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
@@ -272,7 +272,7 @@ namespace EDSCT {
             customShipCreation.HullMass = Int32.Parse(hullMass);
             customShipCreation.Seats = Int32.Parse(seats_);
             customShipCreation.FighterBay = bool.Parse(fighterBay);
-            customShipCreation.FighterCount = Int32.Parse(fighterCount);
+            customShipCreation.MaxFighterBayTier = Int32.Parse(maxFighterBayTier);
             customShipCreation.CargoCapacity = Int32.Parse(cargoCapacity);
             customShipCreation.MaxCargo = Int32.Parse(maxCargo);
             customShipCreation.FuelCapacity = Int32.Parse(fuelCapacity);
