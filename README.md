@@ -33,4 +33,4 @@ Elite Dangerous Ship Comparison Tool
 ![Picture of EDSCT without values](https://puu.sh/waCdH.png)
 ![Picture of EDSCT with values](https://puu.sh/waCeb.png)
 ![Picture of Ship Creator without values](https://puu.sh/waCba.png)
-![Picture of Ship Creator without values](https://puu.sh/waCd4.png)
+![Picture of Ship Creator with values](https://puu.sh/waCmo.png)
